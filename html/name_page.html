@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name</title>
+    <link rel="stylesheet" href="../css/name.css">
+</head>
+<body>
+    <div id="name_page">
+        <video id="name_back" draggable="false" src="../assets/video/lonely-samurai-autumn-tree-monochrome-moewalls-com.mp4"  autoplay loop muted></video>
+        
+        <form id="login_form">
+            <h1 id="name_login_head">Log In</h1>
+            <div id="form_login_inner_container">
+                <label id="name_login_username_label" for="name_login_username">Username</label>
+                <input id="name_login_username" type="text" maxlength="10" required>
+                <label id="name_login_password_label" for="name_login_password">Password</label>
+                <input id="name_login_password" type="password" maxlength="10" required>
+                <p id="name_forgot_password">Forgot Password</p>
+            </div>
+            <p id="login_error">Invalid Username or Password entered</p>
+            <p id="name_login_button"><b>lock in</b></p>
+
+            <p id="name_signup_direct">Doesn't have an account? <u>Sign up</u></p>
+        </form>
+
+        <form id="signup_form">
+            <h1 id="name_signup_head">Sign Up</h1>
+            <div id="form_signup_inner_container">
+                <label id="name_email_label" for="name_email">Email</label>
+                <input id="name_email" type="email" maxlength="25" required>
+                <label id="name_signup_username_label" for="name_signup_username">Username</label>
+                <input id="name_signup_username" type="text" maxlength="15" required>
+                <label id="name_signup_password_label" for="name_signup_password">Password</label>
+                <input id="name_signup_password" type="password" maxlength="15" required>
+            </div>
+            <p id="name_signup_button"><b>lock in</b></p>
+
+            <p id="name_login_direct">Already have an account? <u>Log in</u></p>
+        </form>
+        
+
+        <form id="name_forgot_password_page">
+            <h1 id="name_forgot_password_head">Forgot Password</h1>
+            <div id="form_forgot_password_inner_container">
+                <label id="name_forgot_password_email_label" for="name_forgot_password_email">Email</label>
+                <input id="name_forgot_password_email" type="email" maxlength="25" required>
+                <p id="name_forgot_password_button"><b>Submit</b></p>
+                <p id="name_forgot_password_back_button"><b>Back</b></p>
+            </div>
+        </form>
+
+        <form id="name_forgot_password_message_page">
+            <p id="name_forgot_password_message">Check your mail :]</p>
+            <p id="name_forgot_password_message_back_button"><b>Back</b></p>
+        </form>
+    </div>
+    <script>
+        var login_form = document.getElementById('login_form');
+        var signup_form = document.getElementById('signup_form');
+
+
+        var name_signup_direct = document.getElementById('name_signup_direct');
+        var name_login_direct = document.getElementById('name_login_direct');
+
+        var name_forgot_password = document.getElementById('name_forgot_password');
+        
+        //forgot password page
+        var name_forgot_password_page = document.getElementById('name_forgot_password_page');
+        var name_forgot_password_back_button = document.getElementById('name_forgot_password_back_button');
+        var name_forgot_password_button= document.getElementById('name_forgot_password_button');
+
+        //forgot password page2
+        var name_forgot_password_message_page= document.getElementById('name_forgot_password_message_page');
+    
+
+
+    name_signup_direct.addEventListener('click',function(){
+        login_form.style.display = 'none';
+        signup_form.style.display = 'block';
+    });
+
+    name_login_direct.addEventListener('click',function(){
+        login_form.style.display = 'block';
+        signup_form.style.display = 'none';
+    });
+
+    name_forgot_password.addEventListener('click',function(){
+        login_form.style.display = 'none';
+        name_forgot_password_page.style.display = 'block';
+    });
+
+    name_forgot_password_back_button.addEventListener('click',function(){
+        name_forgot_password_page.style.display = 'none';
+        login_form.style.display = 'block';
+    });
+
+    name_forgot_password_button.addEventListener('click',function(){
+        name_forgot_password_page.style.display = 'none';
+        name_forgot_password_message_page.style.display = 'block';
+        });
+
+    name_forgot_password_message_back_button.addEventListener('click',function(){
+        name_forgot_password_message_page.style.display = 'none';
+        login_form.style.display = 'block';
+        });
+    </script>    
+</body>
+</html>

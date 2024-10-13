@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/clicking.css">
+    <title>Clicking Page</title>
+</head>
+<body>
+    <div id="clicking_page">
+        <video id="clicking_back" draggable="false" src="../assets/video/night-city-daily-life-cyberpunk-2077-moewalls-com.mp4"  autoplay loop muted></video>
+        <h1 id="clicking_head">Clicking</h1>
+        <p id="clicking_para">Clicking focuses on enhancing your ability to hit precise, single shots quickly and accurately. This skill is vital for games where headshots or pinpoint accuracy can make the difference in combat. Practicing clicking can significantly improve your reaction time and shot precision.</p>
+        <h1 id="clicking_event_head">Events:</h1>
+        <img src="../assets/image/line.png" id="clicking_line_design" alt="line">
+    
+        <div id="clicking_main_container">
+            <h1 id="clicking_main_container_head"></h1>
+            <p id="clicking_main_container_content"></p>
+            <p id="clicking_main_container_preview_head">Preview</p>
+
+            <video id="clicking_main_container_preview" autoplay loop muted >
+                <source src="../assets/video/cyborg-moewalls-com.mp4" type="video/mp4">
+            </video>
+            <img src="../assets/image/line.png" id="clicking_line_design2" alt="line2">
+        
+
+            <div>
+                <h1 id="clicking_note">Note:</h1>
+
+                <ul id="clicking_note_list">
+                    <li>Click <b>P</b> to pause the game.</li>
+                    <li>Restarting the browser may end up in relaunching the game.</li>
+                    <li>Clicking Esc Button will close the fullscreen mode (it wont pause the game)</li>
+                    <li>Have fun!</li>
+                </ul>
+            </div>
+            
+            
+            <button id="start_clicking">Play</button>
+        </div>
+
+        <div id="clicking_event_container">
+            <button class="clicking_button_common" id="gridshot_button" onmouseenter="over_gridshot()" onmouseleave="leave_clicking_button()" >Grid Shot</button>
+            <button class="clicking_button_common" id="microshot_button" onmouseenter="over_microshot()" onmouseleave="leave_clicking_button()">Micro Shot</button>
+            <button class="clicking_button_common" id="onetap_button" onmouseenter="over_onetap()" onmouseleave="leave_clicking_button()">One Taps</button>
+            <button class="clicking_button_common" id="headshot_button" onmouseenter="over_headshot()" onmouseleave="leave_clicking_button()">Head Shot</button>
+        </div>
+
+        <p id="go_back_clicking"><b>< BACK</b></P>
+        
+    </div>
+    <script src="../js/clicking.js"></script>
+</body>
+</html>

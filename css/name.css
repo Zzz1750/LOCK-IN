@@ -1,0 +1,319 @@
+#name_page{
+    display: none;
+}
+/* body{
+    zoom: 100%;
+    background-color: black;
+    margin: 0;
+    font-weight: 100;
+    overflow: hidden;
+    cursor: crosshair;
+} */
+#name_back{
+    position: fixed;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    opacity: 0.5;
+}
+#name_login_head{
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+#name_login_username_label{
+    color: rgba(255, 255, 255, 0.9);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+}
+
+#name_login_username{
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 12px;
+}
+
+#name_login_password_label{
+    color: rgba(255, 255, 255, 0.9);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 40px;
+    cursor: pointer;
+}
+
+#name_login_password{
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 42px;
+}
+
+#form_login_inner_container{
+    position: absolute;
+    top: 40%;
+    left: 51%;
+    transform: translate(-50%,-50%);
+    width: 200px;
+    height: 200px;
+}
+
+#login_error{
+    color: rgb(180, 0, 0);
+    font-size: 14px;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#name_login_button{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 1px;
+    padding: 8px;
+    position: absolute;
+    top: 59%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#name_forgot_password{
+    color: rgba(255, 255, 255, 0.8);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 13px;
+    text-decoration: underline;
+    position: relative;
+    top: 30px;
+    left: 90px;
+    cursor: pointer;
+}
+
+#name_forgot_password:hover{
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#name_signup_direct{
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+#name_signup_direct:hover{
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+#signup_form{
+    display: none;
+}
+
+#name_signup_head{
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#name_login_direct{
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    cursor: pointer;
+}
+
+#name_login_direct:hover{
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#name_signup_username_label{
+    color: rgba(255, 255, 255, 0.9);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 30px;
+    cursor: pointer;
+}
+
+#name_signup_username{
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 30px;
+}
+
+#name_signup_password_label{
+    color: rgba(255, 255, 255, 0.9);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 50px;
+    cursor: pointer;
+}
+
+#name_signup_password{
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 49px;
+}
+
+#form_signup_inner_container{
+    position: absolute;
+    top: 42%;
+    left: 51%;
+    transform: translate(-50%,-50%);
+    width: 200px;
+    height: 250px;
+}
+
+#name_signup_button{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 1px;
+    padding: 8px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#name_email_label{
+    color: rgba(255, 255, 255, 0.9);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 0px;
+    cursor: pointer;
+}
+#name_email{
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 4px;
+}
+
+#name_forgot_password_page{
+    display: none;
+}
+
+#name_forgot_password_head{
+    color: white;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 50px;
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+#form_forgot_password_inner_container{
+    position: absolute;
+    top: 42%;
+    left: 51%;
+    transform: translate(-50%,-50%);
+    width: 200px;
+    height: 250px;
+}
+#name_forgot_password_email_label{
+    color: rgba(255, 255, 255, 0.9);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 15px;
+    position: relative;
+    top: 0px;
+    cursor: pointer;
+}
+#name_forgot_password_email{
+    color: black;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 4px;
+}
+
+#name_forgot_password_button{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 1px;
+    padding: 6px;
+    position: absolute;
+    top: 40%;
+    left: 60%;
+    transform: translate(-50%,-50%);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#name_forgot_password_back_button{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 1px;
+    padding: 6px;
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    transform: translate(-50%,-50%);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#name_forgot_password_message_page{
+    display: none;
+}
+#name_forgot_password_message{
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#name_forgot_password_message_back_button{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 1px;
+    padding: 6px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;    
+}

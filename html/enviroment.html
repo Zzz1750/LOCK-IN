@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Three.js Basics with OrbitControls</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Create a scene
+        const scene = new THREE.Scene();
+
+        // Create a camera
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        // Create a renderer
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Set the camera position
+        camera.position.z = 5;
+
+        // Create a geometry (shape)
+        const geometry = new THREE.BoxGeometry();
+
+        // Create a material (appearance)
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+        // Create a mesh (geometry + material)
+        const cube = new THREE.Mesh(geometry, material);
+
+        // Add the mesh to the scene
+        scene.add(cube);
+
+        // Create controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+        // Add a resize event listener
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+
+        // Render the scene
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Rotate the cube
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            // Update controls
+            controls.update();
+
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>

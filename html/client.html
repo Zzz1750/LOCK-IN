@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    
+    <title>LOCK IN - Client</title>
+</head>
+<body>
+    <style>
+        @font-face {
+            font-family: 'valo';
+            src: url("../assets/font/ValorantFont.ttf");
+        }
+        @font-face {
+            font-family: 'barcode';
+            src: url("../assets/font/LibreBarcode39Text-Regular.ttf");
+        }
+        @font-face {
+            font-family: 'eastsea';
+            src: url("../assets/font/EastSeaDokdo-Regular.ttf");
+        }
+        body {
+            zoom: 100%;
+            color: white;
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            cursor: default;
+        }
+        #consentButton {
+            display: none;
+            background-color: #5892b200;
+            border: none;
+            padding: 10px 30px;
+            padding-top: 15px;
+            text-align: center;
+            font-size: 35px;
+            margin-top: 20px;
+            border-radius: 10px;
+            font-family: "Roboto Slab", serif;
+            color: rgba(255, 255, 255, 0.564);
+            font-family: 'valo';
+            font-weight: 100;
+            box-shadow: 0 0 10px rgb(88, 88, 88);
+            position: absolute;
+            top: 35%;
+            left: 13.5%;
+            cursor: pointer;
+        }
+
+        #consentButton:hover{
+            transition: 3s;
+            color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 150px rgb(168, 168, 168);
+        }
+        
+        #content{
+            line-height: 28px;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.735); 
+            opacity: 48%;
+            position: absolute;
+            top: 61%;
+            left: 5%;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+        #home_back{
+            position: fixed;
+            z-index: -1;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            left: 0;
+            top: 0;
+            transform: scale(1.035);
+        }
+        #head{
+            position: absolute;
+            top: 7%;
+            left: 3%;
+            filter: brightness(130%);
+            width: 460px;
+        }
+        #version_head{
+            position: absolute;
+            top: 56%;
+            left: 5%;
+            font-size: 28px;
+            font-family: 'valo';
+            color: rgba(255, 255, 255, 0.658);
+            font-weight: 100;
+            letter-spacing: 3px;
+            opacity: 70%;
+        }
+        #barcode{
+            font-family: 'barcode';
+            color: rgba(255, 255, 255, 0.968);
+            position: absolute;
+            bottom: 2%;
+            margin: 0;
+            right: 30px;
+            font-size: 30px;
+            opacity: 50%    ;
+        }
+        #creator{
+            color: white;
+            position: relative;
+            font-family:'eastsea';
+            font-size: 33px;
+            position: absolute;
+            right: 48%;
+            bottom: 1px;
+            margin: 0;
+            opacity: 40%;
+        }
+        #creator:hover{
+            transition: 0.3s;
+            opacity: 70%;
+            cursor: pointer;
+        }
+        #quote{
+            font-size: 17px;
+            color: rgba(255, 255, 255, 0.833); 
+            opacity: 68%;
+            position: absolute;
+            top: 80%;
+            left: 5%;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serifs;
+        }
+
+        #muteIcon{
+            display: none;
+            width: 25px;
+            height: 25px;
+            filter: invert();
+            opacity: 20%;
+        }
+        #unmuteIcon{
+            display: none;
+            height: 25px;
+            width: 25px;
+            filter: invert();
+            opacity: 20%;
+        }
+        #muteIcon,#unmuteIcon{
+            position: absolute;
+            top: 15%;
+            right: 10%;
+            cursor: pointer;
+        }
+        #startButton{
+            background-color: #5892b200;
+            border: none;
+            padding: 10px 30px;
+            padding-top: 15px;
+            text-align: center;
+            font-size: 26px;
+            margin-top: 20px;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.500);
+            font-family: 'valo';
+            font-weight: 100;
+            box-shadow: 0 0 10px rgb(88, 88, 88);
+            position: absolute;
+            top: 34%;
+            left: 12.5%;
+            cursor: pointer;
+        }
+        #startButton:hover{
+            transition: 1s;
+            color: rgba(255, 255, 255, 0.800);
+            box-shadow: 0 0 150px rgb(168, 168, 168);
+        }
+        #loading_line{
+            display: none;
+            opacity: 70%;
+            filter: invert();
+            width: 0px;
+            height: 65px;
+            position: absolute;
+            top: 37%;
+            left: 4%;
+        }
+        #loading_line2{
+            display: none;
+            opacity: 20%;
+            filter: invert();
+            width: 450px;
+            height: 65px;
+            position: absolute;
+            top: 37%;
+            left: 4%;
+        }
+        #loading_text{
+            display: none;
+            position: absolute;
+            top: 36.5%;
+            left: 4%;
+            font-size: 13px;
+            opacity: 70%;
+        }
+        #refresh{
+            display: none;
+            background-color: transparent;
+            border: none;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            position: absolute;
+            top: 38%;
+            left: 11.3%;
+            cursor: pointer;
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.747); 
+            opacity: 48%;
+        }
+        #refresh:hover{
+            transition: 0.3s;
+            color: rgba(255, 255, 255, 0.918);
+            opacity: 68%;
+        }
+
+        @media only screen and (max-height:700px){
+            #quote{
+                font-size: 15px;
+            }
+            #content{
+                font-size: 15px;
+                top: 61%;
+            }
+            #version_head{
+                font-size: 25px;
+                top: 56%;
+            }
+        }
+        @media only screen and (max-height:600px) {
+            #version_head{
+                font-size: 22px;
+                top: 54%;
+            }
+            #head{
+                width: 350px;
+                left: 4%;
+            }
+            #content{
+                font-size: 12px;
+                line-height: 20px;
+            }
+            #quote{
+                font-size: 13px;
+            }
+            #startButton{
+                font-size: 20px;
+            }
+            #consentButton{
+                font-size: 20px;
+            }
+        }   
+       
+    </style>
+</head>
+<body>
+    <video id="home_back" draggable="false" src="../assets/video/whispers-of-the-forgotten-moewalls-com.mp4" autoplay loop muted></video>
+    <img id="head" src="../assets/image/client_head.png" draggable="false">
+    <button id="consentButton"><b>Play</b></button>
+    <h1 id="version_head">LOCK IN // V 00.00.03</h1>
+    <p id="content"><b>LOCK IN</b> is intended for entertainment and skill improvement purposes only. <br>By clicking on <b>Play</b>, you acknowledge that the game is not a substitute for professional training or guidance.<br>We may collect gameplay data to track progress and provide personalized recommendations, handled per privacy laws,<br>with options to opt-out or delete data; we disclaim any liability for damages while using the game, and updates to this agreement will be communicated as needed. </p>
+    
+    <p id="barcode">LOCK IN</p>
+    <a href=" http://www.instagram.com/zharonn_" target="_blank"><p id="creator">zzz</p></a>
+    <p id="quote">"A man is great not because he hasn't failed;<br> a man is great because failure hasn't stopped him."<br> —Confucius</p>
+    
+    
+    <!-- Game Launcher -->
+    <button id="refresh" onClick="window.location.href=window.location.href">Click here to reload the Client</button>
+    <script>
+        const refresh = document.getElementById('refresh');
+        const playbutton = document.getElementById('consentButton');
+        var newWindow;
+        function handleConsent() {
+          localStorage.setItem('audioConsent', 'true');
+          openWindow();
+        }
+    
+        function openWindow() {
+          const music = document.getElementById('music');
+          const muteIcon = document.getElementById('muteIcon');
+          const unmuteIcon = document.getElementById('unmuteIcon');
+          music.muted = true;
+          newWindow = window.open("main.html", "_blank", "width=1300px,height=800px");
+          localStorage.setItem('mainWindowName', newWindow.name);
+          muteIcon.style.display='none';
+          unmuteIcon.style.display='none';
+          launch_essentials();
+        }
+    
+        function launch_essentials()
+        {
+            playbutton.style.display='none';
+            refresh.style.display='inline';
+            
+        }
+        document.getElementById('consentButton').addEventListener('click', handleConsent);
+      </script>
+
+
+
+      <!-- Audio Part-->
+      <button id="startButton">Launch</button>
+      <img src="../assets/image/unmute.png" id="muteIcon">
+      <img src="../assets/image/mute.png" id="unmuteIcon" style="display: none;">
+      <audio id="music" src="../assets/music/HEROICCC(chosic.com).mp3" type="audio/mpeg" loop></audio>
+      <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              const startButton = document.getElementById('startButton');
+              const muteIcon = document.getElementById('muteIcon');
+              const unmuteIcon = document.getElementById('unmuteIcon');
+              const music = document.getElementById('music');
+  
+              function playMusic() {
+                  music.play().then(() => {
+                      muteIcon.style.display = 'inline';
+                  }).catch(error => {
+                      console.error("Playback failed: ", error);
+                  });
+              }
+  
+              startButton.addEventListener('click', function() {
+                  playMusic();
+                  startButton.style.display = 'none';
+              });
+  
+              muteIcon.addEventListener('click', function() {
+                  music.muted = true;
+                  muteIcon.style.display = 'none';
+                  unmuteIcon.style.display = 'inline';
+              });
+  
+              unmuteIcon.addEventListener('click', function() {
+                  music.muted = false;
+                  muteIcon.style.display = 'inline';
+                  unmuteIcon.style.display = 'none';
+              });
+          });
+      </script>
+
+
+      <!-- Loading Part -->
+      <img id="loading_line" src="../assets/image/line.png" alt="">
+      <img id="loading_line2" src="../assets/image/line.png" alt="">
+      <p id="loading_text">Connecting...</p>
+      <script>
+        const startButton = document.getElementById('startButton');
+        const loading_line = document.getElementById('loading_line');
+        const loading_line2 = document.getElementById('loading_line2');
+        const loading_text = document.getElementById('loading_text');
+        const consentButton = document.getElementById('consentButton');
+        startButton.addEventListener('click', function() {
+            playLoad();
+        });
+        function playLoad(){
+            console.log("launch Initiated");
+            loading_line.style.display = 'inline';
+            loading_line2.style.display = 'inline';
+            loading_text.style.display = 'inline';
+
+            function myMessage1() {
+                loading_text.innerHTML = "Loading resources...";
+                loading_line.style.width='100px';
+              }
+            function myMessage2() {
+                loading_text.innerHTML = "Compiling resources...";
+                loading_line.style.width='240px';
+            }
+            function myMessage3() {
+                loading_text.innerHTML = "Finishing up...";
+                loading_line.style.width='340px';
+            }
+            function myMessage4() {
+                loading_text.innerHTML = "Completed!";
+                loading_line.style.width='450px';
+            }
+            function myMessage5() {
+                loading_line.style.display = 'none';
+                loading_line2.style.display = 'none';
+                loading_text.style.display = 'none';
+                consentButton.style.display = 'inline';
+            }
+            setTimeout(myMessage1,1500);
+            setTimeout(myMessage2,2100);
+            setTimeout(myMessage3,3000);
+            setTimeout(myMessage4,4000);
+            setTimeout(myMessage5,4100);
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>category_play</title>
+    <link rel="stylesheet" href="../css/category.css">
+</head>
+<body>
+    <video id="category_back" draggable="false" src="../assets/video/dystopian-night-city-cyberpunk-2077-moewalls-com.mp4"  autoplay loop muted></video>
+    <h1 id="category_head">Scenario</h1>
+    <div id="category_container">
+        <button id="clicking_box">Clicking</button>
+        <button id="switching_box">Switching</button>
+        <button id="tracking_box">Tracking</button>
+    </div>
+    <h1 id="about_category"></h1>
+    <h1 id="go_back">< BACK</h1>
+    <script>
+
+        //button_effect
+        document.addEventListener('DOMContentLoaded', function() {
+            var buttons = document.querySelectorAll('button');
+
+            buttons.forEach(function(button) {
+                button.addEventListener('mouseenter', function() {
+                    button.style.transform = 'scale(1.05)';
+                    button.style.color = 'white';
+                });
+
+                button.addEventListener('mouseleave', function() {
+                    button.style.transform = 'scale(1)';
+                    button.style.color = 'rgba(255, 255, 255, 0.7)';
+                });
+            });
+        });
+
+        //clicking_box_about
+        var clicking_box= document.getElementById('clicking_box');
+        var about_category = document.getElementById('about_category');
+        clicking_box.addEventListener('mouseenter', function(){
+            about_category.style.width='860px';
+            about_category.innerHTML= 'Improving your clicking accuracy is essential for games where quick and precise shots are crucial to outplay your opponents.';
+        });
+        clicking_box.addEventListener('mouseleave', function(){
+            about_category.style.width='0px';
+            about_category.innerHTML= '';
+        });
+
+        //switching_box_about
+        var switching_box= document.getElementById('switching_box');
+        switching_box.addEventListener('mouseenter', function(){
+            about_category.style.width='1000px';
+            about_category.innerHTML= 'Mastering switching techniques enables you to rapidly change targets, ensuring that you can efficiently handle multiple threats in quick succession.';
+        });
+        switching_box.addEventListener('mouseleave', function(){
+            about_category.style.width='0px';
+            about_category.innerHTML= '';
+        });
+
+        //tracking_box_about
+        var tracking_box= document.getElementById('tracking_box');
+        tracking_box.addEventListener('mouseenter', function(){
+            about_category.style.width='950px';
+            about_category.innerHTML= 'Effective tracking skills allow you to smoothly follow and hit moving targets, maintaining consistent damage output in fast-paced scenarios.';
+        });
+        tracking_box.addEventListener('mouseleave', function(){
+            about_category.style.width='0px';
+            about_category.innerHTML= '';
+        });
+
+        //back_effect
+        var back_effect= document.getElementById('go_back');
+        back_effect.addEventListener('mouseenter', function(){
+            back_effect.style.transform = 'scale(1.02)';
+            //back_effect.style.transition='0.1s';
+            back_effect.style.color='rgba(255, 255, 255, 0.749)';
+
+        });
+        back_effect.addEventListener('mouseleave',function(){
+            back_effect.style.transform = 'scale(1)';
+            back_effect.style.color='rgba(255, 255, 255, 0.549)';
+        });
+        
+
+    </script>
+</body>
+</html>

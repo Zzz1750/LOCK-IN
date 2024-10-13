@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/leaderboard.css">
+</head>
+<body>
+    <div id="leaderboard_page">
+        <h1 id="leaderboard_head">Leaderboard</h1>
+        <p id="leaderboard_description">The leaderboard is a dynamic ranking system showcasing the top performers in various aim training exercises. It updates in real-time, allowing players to see where they stand globally or among friends. Compete to improve your scores and climb the ranks!</p>
+        <p id="leaderboard_type_head">Events: </p>
+        <video id="leaderboard_back" draggable="false" src="../assets/video/alps-mountain-moewalls-com.mp4"  autoplay loop muted></video>
+        
+
+        <img src="../assets/image/line.png" alt="line1" id="leaderboard_line1">
+        <h1 id="leaderboard_table_head">Masters of <u>LOCK IN</u></h1>
+        <img src="../assets/image/line.png" alt="line2" id="leaderboard_line2">
+
+        <div id="leaderboard_table_container">
+
+            <div id="first_player" class="leaderboard_table_button_common">
+                <p id="first_player_name" class="leaderboard_player_name_common">O_Player1</p>
+                <p id="first_player_score">O_9978</p>
+            </div>
+
+            <div id="second_player" class="leaderboard_table_button_common">
+                <p id="second_player_name" class="leaderboard_player_name_common">O_Player2</p>
+                <p id="second_player_score">O_8056</p>
+            </div>
+
+            <div id="third_player" class="leaderboard_table_button_common">
+                <p id="third_player_name" class="leaderboard_player_name_common">O_Player3</p>
+                <p id="third_player_score">O_8007</p>
+            </div>
+
+            <div id="fourth_player" class="leaderboard_table_button_common">
+                <p id="fourth_player_name" class="leaderboard_player_name_common">O_Player4</p>
+                <p id="fourth_player_score">O_7568</p>
+            </div>
+
+            <div id="fifth_player" class="leaderboard_table_button_common">
+                <p id="fifth_player_name" class="leaderboard_player_name_common">O_Player5</p>
+                <p id="fifth_player_score">O_6989</p>
+            </div>
+
+        </div>
+
+        <div id="leaderboard_type">
+            <button class="leaderboard_type_button" id="overall_rank_button" onclick="overall_active()">Overall</button><br>
+            <button class="leaderboard_type_button" id="clicking_rank_button" onclick="clicking_active()">Clicking</button><br>
+            <button class="leaderboard_type_button" id="switching_rank_button" onclick="switching_active()">Switching</button><br>
+            <button class="leaderboard_type_button" id="tracking_rank_button" onclick="tracking_active()">Tracking</button><br>
+        </div>
+        <p id="go_back_leaderboard"><b>< BACK</b></p>
+    </div>
+    <script src="../js/leaderboard.js"></script>
+    </body>
+</html>

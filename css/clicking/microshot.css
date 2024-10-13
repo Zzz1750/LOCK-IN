@@ -1,0 +1,227 @@
+#microshot_page{
+    display: none;
+}
+#game_back_microshot{
+    position: fixed;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    opacity: 0.07;
+}
+
+#game_back2_microshot{
+    position: fixed;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    opacity: 0;
+}
+#game_back3_microshot{
+    position: fixed;
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    opacity: 0;
+}
+#backgroundpauser_microshot{
+    position: fixed;
+    z-index: 18;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    opacity: 0;
+    display: none;
+}
+
+#pause_menu_microshot{
+    position: fixed;
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    opacity: 0.02;
+    display: none;
+}
+
+#ball_microshot{ 
+    background-color: rgb(60, 196, 238);
+    border: none;
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    display: none;
+    z-index: 16;
+    cursor: crosshair;
+}
+#score_microshot{
+    color: white;
+    font-family: "Chakra Petch";
+    position: absolute;
+    top: 110%;
+    left: 48%;
+    transform: translate(-50%,-50%);
+    font-size: 16px;
+}
+#score_div_microshot{
+    border-bottom: 36px solid rgb(14, 61, 95);
+    border-left: 50px solid transparent;
+    width: 160px;
+    height: 30px;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+    transform: translate(-50%,-50%);
+}
+
+#grishot_time_system_container{
+    color: white;
+    font-family: "Chakra Petch";
+    font-size: 33px;
+    height: 50px;
+    width: 250px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 6;
+}
+#time_microshot{
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#time_margin_microshot{
+    position: absolute;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#accuracy_microshot{
+    color: white;
+    font-family: "Chakra Petch";
+    position: absolute;
+    top: 110%;
+    left: 48%;
+    transform: translate(-50%,-50%);
+    font-size: 16px;
+}
+
+
+#accuracy_div_microshot{
+    border-bottom: 36px solid rgb(14, 61, 95);
+    border-right: 50px solid transparent;
+    width: 160px;
+    height: 30px;
+    position: absolute;
+    top: 20%;
+    left: 75%;
+    transform: translate(-50%,-50%);
+}
+
+#microshot_system_container{
+    position: absolute;
+    height: 100px;
+    width: 800px;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+#ticker_data_microshot{
+    color: rgba(255, 255, 255, 0.826);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 55px;
+}
+
+
+
+.microshot_menu_container_items{
+    position: absolute;
+    color: rgba(255, 255, 255, 0.895);
+    font-family: "Chakra Petch";
+    transform: translate(-50%,-50%);
+    font-size: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.716);
+    padding: 10px 20px 10px 20px ;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#resume_microshot{
+    top: 13%;
+    left: 50%;
+}
+#restart_microshot{
+    top: 41%;
+    left: 50%;
+}
+
+#exit_microshot{
+    top: 72%;
+    left: 50%;
+    padding: 10px 40px 10px 40px;
+}
+
+#microshot_menu_container{
+    position: absolute;
+    border: 5px dashed rgba(255, 255, 255, 0.3);
+    height: 350px;
+    width: 300px;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    z-index: 25;
+    display: none;
+}
+
+#microshot_pause_button{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 25px;
+    height: 25px;
+    z-index: 15;
+    filter: invert(100%);
+    opacity: 0.9;
+    cursor: pointer;
+    display: none;
+}
+
+#microshot_ground{
+    position: absolute;
+    height: 37%;
+    width: 25%;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid white;
+    z-index: 10;
+    display: none;
+}

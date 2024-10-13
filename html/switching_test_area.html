@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/switching.css">
+    <title>Switching Page</title>
+</head>
+<body>
+    <div id="switching_page">
+        <video id="switching_back" draggable="false" src="../assets/video/space-portal-moewalls-com.mp4"  autoplay loop muted></video>
+        <h1 id="switching_head">Switching</h1>
+        <p id="switching_para">Switching is an aim training exercise focused on quickly and accurately switching between targets. This practice sharpens reflexes, improves precision, and enhances target prioritization skills. It's essential for players looking to excel in fast-paced shooter games where quick target transitions are critical for success.</p>
+        <h1 id="switching_event_head">Events:</h1>
+        <img src="../assets/image/line.png" id="switching_line_design" alt="line">
+    
+        <div id="switching_main_container">
+            <h1 id="switching_main_container_head"></h1>
+            <p id="switching_main_container_content"></p>
+            <p id="switching_main_container_preview_head">Preview</p>
+
+            <video id="switching_main_container_preview" autoplay loop muted >
+                <source src="../assets/video/cyborg-moewalls-com.mp4" type="video/mp4">
+            </video>
+            <img src="../assets/image/line.png" id="switching_line_design2" alt="line2">
+        
+
+            <div>
+                <h1 id="switching_note">Note:</h1>
+
+                <ul id="switching_note_list">
+                    <li>Click <b>P</b> to pause the game.</li>
+                    <li>Restarting the browser may end up in relaunching the game.</li>
+                    <li>Clicking Esc Button will close the fullscreen mode (it wont pause the game)</li>
+                    <li>Have fun!</li>
+                </ul>
+            </div>
+            
+            
+            <button id="start_switching">Play</button>
+        </div>
+
+        <div id="switching_event_container">
+            <button class="switching_button_common" id="multitap_button" onmouseenter="over_multitap()" onmouseleave="leave_switching_button()" >Multi Taps</button>
+            <button class="switching_button_common" id="burst_button" onmouseenter="over_burst()" onmouseleave="leave_switching_button()">Burst Shot</button>
+            <button class="switching_button_common" id="maptap_button" onmouseenter="over_maptap()" onmouseleave="leave_switching_button()">Map Switch</button>
+            <button class="switching_button_common" id="deathtap_button" onmouseenter="over_deathtap()" onmouseleave="leave_switching_button()">Death Shot</button>
+        </div>
+
+        <p id="go_back_switching"><b>< BACK</b></P>
+        
+    </div>
+    <script src="../js/switching.js"></script>
+</body>
+</html>

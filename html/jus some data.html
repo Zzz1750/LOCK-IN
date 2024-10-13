@@ -1,0 +1,413 @@
+<!-- fullscreen -->
+<img id="enterFullscreen" src="../assets/image/fullscreen.png">
+<img id="exitFullscreen" src="../assets/image/exit_fullscreen.png">
+<script>
+    document.getElementById('enterFullscreen').addEventListener('click', requestFullscreen);
+    document.getElementById('exitFullscreen').addEventListener('click', exitFullscreen);
+
+    function requestFullscreen() {
+        let elem = document.documentElement;
+        
+        if (elem.requestFullscreen) {  
+            elem.requestFullscreen().catch((err) => {
+                alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+            });
+        } else if (elem.mozRequestFullScreen) { // Firefox
+            elem.mozRequestFullScreen().catch((err) => {
+                alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+            });
+        } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            elem.webkitRequestFullscreen().catch((err) => {
+                alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+            });
+        } else if (elem.msRequestFullscreen) { // IE/Edge
+            elem.msRequestFullscreen().catch((err) => {
+                alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+            });
+        } else {
+            alert('Fullscreen API is not supported on this browser.');
+        }
+
+        document.getElementById('enterFullscreen').style.display = 'none';
+        document.getElementById('exitFullscreen').style.display = 'block';
+        full_lander();
+    }
+
+    function exitFullscreen() {
+        if (document.exitFullscreen) {
+            document.exitFullscreen().catch((err) => {
+                alert(`Error attempting to exit fullscreen mode: ${err.message} (${err.name})`);
+            });
+        } else if (document.mozCancelFullScreen) { // Firefox
+            document.mozCancelFullScreen().catch((err) => {
+                alert(`Error attempting to exit fullscreen mode: ${err.message} (${err.name})`);
+            });
+        } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+            document.webkitExitFullscreen().catch((err) => {
+                alert(`Error attempting to exit fullscreen mode: ${err.message} (${err.name})`);
+            });
+        } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen().catch((err) => {
+                alert(`Error attempting to exit fullscreen mode: ${err.message} (${err.name})`);
+            });
+        }
+
+        document.getElementById('enterFullscreen').style.display = 'block';
+        document.getElementById('exitFullscreen').style.display = 'none';
+        exit_lander();
+    }
+
+
+    var barcode = document.getElementById('barcode');
+    var version = document.getElementById('version');
+    function full_lander(){
+        barcode.style.top='688px';
+        version.style.top='650px';
+    }
+    function exit_lander(){
+        barcode.style.top='633px';
+        version.style.top='595px';
+    }
+</script>
+
+
+#exitFullscreen,#enterFullscreen{
+    position: absolute;
+    filter: invert();
+    top: 5%;
+    left: 3%;
+    cursor: pointer;
+    
+}
+#enterFullscreen{
+    width: 30px;
+    height: 30px;
+    animation-name: fullscreen;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    opacity: 60%;
+}
+#exitFullscreen{
+    display: none;
+    width: 30px;
+    height: 30px;
+    opacity:30% ;
+}
+
+
+@keyframes main_head{
+    0% {
+        transform: translate(0);
+        opacity: 100%;
+     }
+     20% {
+        transform: translate(-3px, 3px);
+        opacity: 80%;
+     }
+     40% {
+        transform: translate(-3px, -3px);
+        opacity: 100%;
+     }
+     60% {
+        transform: translate(3px, 3px);
+        opacity: 80%;
+     }
+     80% {
+        transform: translate(3px, -3px);
+        opacity: 80%;
+     }
+     to {
+        transform: translate(0);
+        opacity: 100%;
+     }
+}
+
+<h1 id="main_head">LOCK IN</h1>
+
+    <p id="main_head2">Aim Trainer</p>
+    <img src="../assets/image/target.png" id="design_crosshair">
+
+    
+#design_crosshair{
+    filter: invert(100%);
+    position: absolute;
+    width: 50px;
+    top: 168px;
+    right: 528px;
+    opacity: 90%;
+}
+
+
+audio.play().then(() => {
+    console.log('Audio playback started');
+}).catch(error => {
+    console.error('Error during audio playback:', error);
+});
+
+
+<!-- from the name container for name page -->
+#name_container{
+    position: absolute;
+    top: 24%;
+    left: 41.8%;
+    border: 3px solid rgba(150, 150, 150, 0.293);
+    padding: 20px 50px 50px 50px;
+    background-color: rgba(145, 145, 145, 0.141);
+    border-radius: 30px;
+}
+
+
+
+<!-- main to category -->
+/*var home_back = document.getElementById('home_back');
+        var main_play= document.getElementById('main_play');
+        var main_head= document.getElementById('main_head');
+        var exit= document.getElementById('exit');
+        var settings= document.getElementById('settings');
+
+
+        const playbut=document.getElementById('main_play');
+        playbut.addEventListener('click', function() {
+            main_page_remover();
+        });
+
+
+        function main_page_remover(){
+            home_back.style.opacity=0;
+            main_play.style.opacity=0;
+            exit.style.opacity=0;   
+            settings.style.opacity=0;
+            main_head.style.opacity=0;
+
+            setTimeout(category_page_displayer,500);
+
+            function category_page_displayer(){
+                home_back2.style.opacity=1;
+            }
+        }*/
+
+
+
+        <!-- Main -> Category -->
+    <script>
+        var transitor = document.getElementById('transitor');
+        var category_head = document.getElementById('category_head');
+        var category_back = document.getElementById('category_back');
+        var container = document.getElementById('category_container');
+        var clicking_box=document.getElementById('clicking_box');
+        var switching_box=document.getElementById('switching_box');
+        var tracking_box= document.getElementById('tracking_box');
+
+    
+
+        const playbut=document.getElementById('main_play');
+        playbut.addEventListener('click', function() {
+            give_transition_category();
+        });
+
+        function give_transition_category(){
+            transitor.style.display='block';
+            setTimeout(show_transition_category,500);
+            
+            function show_transition_category(){
+                transitor.style.opacity=1;
+                category_head.style.display='block';
+                category_back.style.display='block';
+                container.style.display='flex';
+                clicking_box.style.displa='flex';
+                switching_box.style.display='flex';
+                tracking_box.style.display='flex';
+
+                setTimeout(show_category,800);
+
+                function show_category(){
+                    hideElements();
+                    transitor.style.opacity=0;
+                    category_head.style.opacity=1;
+                    category_back.style.opacity=0.6;
+                    container.style.opacity=1;
+                    clicking_box.style.opacity=1;
+                    switching_box.style.opacity=1;
+                    tracking_box.style.opacity=1;
+
+                    
+                    clicking_box.addEventListener('mouseenter', function() {
+                        clicking_box.style.transform = 'scale(1.05)';
+                        clicking_box.style.color = 'rgb(255, 255, 255)';
+                    });
+                    
+                    clicking_box.addEventListener('mouseleave', function() {
+                        clicking_box.style.transform = 'scale(1)';
+                        clicking_box.style.color = 'red';
+                    });
+                }
+            }
+
+        }
+
+        function hideElements() {
+            let elements = document.querySelectorAll('.to_hide');
+            elements.forEach(element => {
+                element.style.display = 'none';
+            });
+        }
+        
+       
+    </script>
+
+
+
+
+
+
+
+    //clicking_page
+    var clicking_main_container=document.getElementById('clicking_main_container');
+    var clicking_main_container_head = document.getElementById('clicking_main_container_head');
+    var clicking_main_container_content = document.getElementById('clicking_main_container_content');
+    var clicking_main_container_preview = document.getElementById('clicking_main_container_preview');
+    var clicking_main_container_preview_title = document.getElementById('clicking_main_container_preview_title');   
+    clicking_main_container.style.display='block';
+
+    gridshot_button.addEventListener('mouseenter',function(){
+            
+        gridshot_container_caller();
+        
+        setTimeout(clicking_container_caller,100);
+
+        gridshot_button.addEventListener('click',function(){
+            gridshot_button.style.border='1px solid white';
+            gridshot_button.style.transform='scale(1.02)';
+            gridshot_button.style.color='rgba(255, 255, 255, 0.85)';
+
+            gridshot_flag=1;
+            microshot_flag=0;
+            onetap_flag=0;
+            headshot_flag=0;
+
+        })
+        
+    });
+    gridshot_button.addEventListener('mouseleave',function(){
+
+        if(gridshot_button=1)
+        {
+            console.log('gridshot_selected');
+        }
+        else{
+            gridshot_button.style.transform='scale(1)';
+            gridshot_button.style.color='rgba(255, 255, 255, 0.6)';
+            setTimeout(clicking_container_callback,100);
+            show_container();
+        }
+        
+    });
+
+
+
+
+    microshot_button.addEventListener('mouseenter',function(){
+
+        microshot_container_caller();
+        
+        
+        setTimeout(clicking_container_caller,100);
+    });
+
+    microshot_button.addEventListener('click',function(){
+        gridshot_button.style.border='1px solid white';
+            gridshot_button.style.transform='scale(1.02)';
+            gridshot_button.style.color='rgba(255, 255, 255, 0.85)';
+
+            gridshot_flag=0;
+            microshot_flag=1;
+            onetap_flag=0;
+            headshot_flag=0;
+    });
+
+    microshot_button.addEventListener('mouseleave',function(){
+
+        if(microshot_button=1)
+        {
+            console.log('microshot_selected');
+            
+        }
+        else{
+            microshot_button.style.transform='scale(1)';
+            microshot_button.style.color='rgba(255, 255, 255, 0.6)';
+            setTimeout(clicking_container_callback,100);
+            show_container();
+        }
+
+    });
+
+    
+    
+    
+    
+    
+    
+    
+    onetap_button.addEventListener('mouseenter',function(){
+        onetap_button.style.transition='0.3s';
+        onetap_button.style.transform='scale(1.02)';
+        onetap_button.style.color='rgba(255, 255, 255, 0.85)';
+
+        clicking_main_container_head.innerHTML='One Taps';
+        clicking_main_container_content.innerHTML='One-Tap Practice requires you to eliminate targets with a single click, emphasizing accuracy over speed. This drill trains you to make each shot count, which is crucial for games where headshots or single-shot kills are critical.';
+        changeVideo('../assets/video/night-city-daily-life-cyberpunk-2077-moewalls-com.mp4')
+        clicking_main_container_preview_title.innerHTML='One Taps 001';
+
+        setTimeout(clicking_container_caller,100);
+    });
+    onetap_button.addEventListener('mouseleave',function(){ 
+        onetap_button.style.transform='scale(1)';
+        onetap_button.style.color='rgba(255, 255, 255, 0.6)';
+
+        setTimeout(clicking_container_callback,100);
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    headshot_button.addEventListener('mouseenter',function(){
+        headshot_button.style.transition='0.3s';
+        headshot_button.style.transform='scale(1.02)';
+        headshot_button.style.color='rgba(255, 255, 255, 0.85)';
+
+        clicking_main_container_head.innerHTML='Head Shot';
+        clicking_main_container_content.innerHTML='Headshot Precision involves hitting head-sized targets that appear randomly on the screen, simulating in-game headshot scenarios. This exercise sharpens your ability to consistently hit headshots, increasing your efficiency in dealing maximum damage with minimal shots.';
+        changeVideo('../assets/video/night-city-daily-life-cyberpunk-2077-moewalls-com.mp4')
+        clicking_main_container_preview_title.innerHTML='Head Shot 001';
+
+        setTimeout(clicking_container_caller,100);
+    });
+    headshot_button.addEventListener('mouseleave',function(){
+        headshot_button.style.transform='scale(1)';
+        headshot_button.style.color='rgba(255, 255, 255, 0.6)';
+
+        setTimeout(clicking_container_callback,100);
+
+
+    });
+
+
+    /*document.addEventListener('DOMContentLoaded', function() {
+        const container = document.getElementById('clicking_event_container');
+        const clicking_button = container.querySelectorAll('.clicking_button_common');
+
+        clicking_button.forEach(button => {
+            button.addEventListener('click', function() {
+            clicking_button.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            });
+        });
+    });*/
+
+
+    //demo_video
+    

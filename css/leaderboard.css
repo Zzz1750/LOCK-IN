@@ -1,0 +1,241 @@
+@font-face {
+    font-family: 'buts';
+    src: url("../assets/font/ValorantFont.ttf");
+}
+@font-face {
+    font-family: 'leaderboard_head';
+    src: url("../assets/font/Righteous-Regular.ttf");
+}
+
+#leaderboard_page{
+    display: none;
+}
+/* body{
+    zoom: 100%;
+    background-color: black;
+    margin: 0;
+    overflow: hidden;
+    cursor: crosshair;
+} */
+
+#leaderboard_back{
+    position: fixed;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    opacity: 0.5;
+    transform: scale(1.05);
+}
+#leaderboard_head{
+    color: white;
+    font-family: 'buts';
+    position: absolute;
+    margin: 0;
+    top: 7%;  
+    left: 3%;
+    letter-spacing: 5px;
+    font-size: 35px;
+    opacity: 0.8;
+}
+
+#leaderboard_description{
+    color:rgba(255, 255, 255, 0.5);
+    font-size: 15px;
+    width: 500px;
+    position: absolute;
+    top: 12%;
+    left: 3%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#leaderboard_type_head{
+    color:rgba(255, 255, 255, 0.8);
+    font-size: 25px;
+    position: absolute;
+    top: 30%;
+    left: 3%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;    
+}
+
+#leaderboard_line1{
+    filter: invert(100%);
+    width: 650px;
+    height: 8px;
+    position: absolute;
+    top: 30%;
+    left: 70%;
+    transform: translate(-50%);
+    opacity: 0.5;
+}
+#leaderboard_line2{
+    filter: invert(100%);
+    width: 500px;
+    height: 8px;
+    position: absolute;
+    top: 11%;
+    left: 70%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+}
+#leaderboard_table_head{
+    display:grid;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 50px;
+    position: absolute;
+    top: 10%;
+    left: 70%;
+    font-family:'leaderboard_head';
+    transform: translateX(-50%);
+}
+#leaderboard_type{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 38%;
+        left: 3%;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.leaderboard_type_button{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgba(255, 255, 255, 0.8);
+    width: 300px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+.leaderboard_type_button:hover{
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+
+/* container btw not button size changer */
+#leaderboard_table_container{
+    position: absolute;
+    top: 70%;
+    left: 72.5%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 600px;  
+}
+
+.leaderboard_table_button_common{
+   color: rgba(255, 255, 255, 0.8);
+   background-color: rgba(255, 255, 255, 0.04);
+   height: 70px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   border: 0.5px solid rgba(255, 255, 255, 0.5);
+   font-size: 20px;
+   border-radius: 10px;
+   
+}
+
+
+#first_player{
+    width: 600px;
+    position: relative;
+    top: 0;
+}
+
+#second_player{
+    width: 550px;
+    position: relative;
+    top: 10px;
+}
+
+#third_player{
+    width: 500px;
+    position: relative;
+    top: 20px;
+}
+
+#fourth_player{
+    width: 450px;
+    position: relative;
+    top: 30px;
+}
+
+#fifth_player{
+    width: 400px;
+    position: relative;
+    top: 40px;
+}
+
+
+
+/* box inner element modifiers */
+.leaderboard_player_name_common{
+    position: relative;
+    left: 25px;
+    top: 0px;
+}
+
+#first_player_score{
+    position: relative;
+    left: 500px;
+    bottom: 40px;
+}
+
+#second_player_score{
+    position: relative;
+    left: 450px;
+    bottom: 40px;
+}
+
+#third_player_score{
+    position: relative;
+    left: 400px;
+    bottom: 40px;
+}
+
+#fourth_player_score{
+    position: relative;
+    left: 350px;
+    bottom: 40px;
+}
+#fifth_player_score{
+    position: relative;
+    left: 300px;
+    bottom: 40px;
+}
+
+#go_back_leaderboard{
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.583);
+    position: absolute;
+    bottom: 10%;
+    left: 4%;
+    font-size: 19px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+@media(max-height:900px){
+.leaderboard_table_button_common{
+    height: 65px;
+    font-size: 19px;
+}
+#leaderboard_table_container{
+    height: 500px;
+}
+}
+
+@media(max-height:750px){
+.leaderboard_table_button_common{
+    height: 65px;
+    font-size: 19px;
+}
+#leaderboard_table_container{
+    height: 400px;
+}
+#leaderboard_line1{
+    top: 35%;
+}
+}

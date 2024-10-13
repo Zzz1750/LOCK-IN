@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/tracking.css">
+    <title>Tracking Page</title>
+</head>
+<body>
+    <div id="tracking_page">
+        <video id="tracking_back" draggable="false" src="../assets/video/space-hole-in-the-universe-moewalls-com.mp4"  autoplay loop muted></video>
+        <h1 id="tracking_head">Tracking</h1>
+        <p id="tracking_para">Tracking is a vital aim training exercise focused on maintaining precise crosshair alignment with moving targets. Essential for games requiring sustained accuracy, it improves your ability to consistently follow and engage dynamic opponents, enhancing your in-game performance.</p>
+        <h1 id="tracking_event_head">Events:</h1>
+        <img src="../assets/image/line.png" id="tracking_line_design" alt="line">
+    
+        <div id="tracking_main_container">
+            <h1 id="tracking_main_container_head"></h1>
+            <p id="tracking_main_container_content"></p>
+            <p id="tracking_main_container_preview_head">Preview</p>
+
+            <video id="tracking_main_container_preview" autoplay loop muted >
+                <source src="../assets/video/cyborg-moewalls-com.mp4" type="video/mp4">
+            </video>
+            <img src="../assets/image/line.png" id="tracking_line_design2" alt="line2">
+        
+
+            <div>
+                <h1 id="tracking_note">Note:</h1>
+
+                <ul id="tracking_note_list">
+                    <li>Click <b>P</b> to pause the game.</li>
+                    <li>Restarting the browser may end up in relaunching the game.</li>
+                    <li>tracking Esc Button will close the fullscreen mode (it wont pause the game)</li>
+                    <li>Have fun!</li>
+                </ul>
+            </div>
+            
+            
+            <button id="start_tracking">Play</button>
+        </div>
+
+        <div id="tracking_event_container">
+            <button class="tracking_button_common" id="singletrack_button" onmouseenter="over_singletrack()" onmouseleave="leave_tracking_button()">Single Track</button>
+            <button class="tracking_button_common" id="parallel_button" onmouseenter="over_parallel()" onmouseleave="leave_tracking_button()">Parallel</button>
+            <button class="tracking_button_common" id="runner_button" onmouseenter="over_runner()" onmouseleave="leave_tracking_button()">Runner</button>
+            <button class="tracking_button_common" id="evadetrack_button" onmouseenter="over_evadetrack()" onmouseleave="leave_tracking_button()">Evade Track</button>
+        </div>
+
+        <p id="go_back_tracking"><b>< BACK</b></P>
+        
+    </div>
+    <script src="../js/tracking.js"></script>
+</body>
+</html>

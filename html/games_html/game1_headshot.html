@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/clicking/headshot.css">
+</head>
+<body>
+    <div id="headshot_page">
+        <h1 id="ticker_data_headshot">Click to Start!</h1>
+        <img src="./game-back.jpg" id="game_back_headshot" draggable="false">   <!-- main_background -->
+        <img src="./game-back.jpg" id="game_back2_headshot" draggable="false">  <!-- point system -->
+        <img src="./game-back.jpg" id="game_back3_headshot" draggable="false">  <!-- game starter -->
+        <img src="./game-back.jpg" id="backgroundpauser_headshot" draggable="false">    <!-- game_over -->
+    
+    
+        <img src="../../assets/image/pause.png" id="headshot_pause_button" alt="pause_button">
+    
+    
+        <div id="headshot_system_container">
+            <div id="score_div_headshot">
+                <p id="score_headshot">0 pts</p>
+            </div>
+            <div id="grishot_time_system_container">
+                <p id="time_margin_headshot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+                <p id="time_headshot">0:59</p>
+            </div>
+            <div id="accuracy_div_headshot">
+                <p id="accuracy_headshot">0%</p>
+            </div>
+        </div>
+        
+        <button id="ball_headshot">‎ </button>
+    
+        <div id="headshot_menu_container">
+            <img src="./game-back.jpg" id="pause_menu_headshot" draggable="false">  <!-- pause -->
+            <p id="resume_headshot" class="headshot_menu_container_items">RESUME</p>
+            <p id="restart_headshot"class="headshot_menu_container_items">RESTART</p>
+            <p id="exit_headshot" class="headshot_menu_container_items">EXIT</p>
+         </div>
+    
+    </div>
+    <script src="../../js/game_js/headshot.js"></script>
+</body>
+</html>

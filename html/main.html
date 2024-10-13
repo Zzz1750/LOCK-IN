@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        @font-face {
+            font-family: 'valo';
+            src: url("../assets/font/UrbanJungleDEMO.otf");
+        }
+        @font-face {
+            font-family: 'buts';
+            src: url("../assets/font/ValorantFont.ttf");
+        }
+       
+        @font-face {
+            font-family: 'barcode';
+            src: url("../assets/font/LibreBarcode39Text-Regular.ttf");
+        }
+        @font-face {
+            font-family: 'eastsea';
+            src: url("../assets/font/EastSeaDokdo-Regular.ttf");
+        }
+        *{
+            transition: opacity 0.4s ease-in-out;
+        }
+        
+        #transitor{
+            display: none;
+            position: fixed;
+            z-index: 30;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            left: 0;
+            top: 0;
+            object-fit: cover;
+            opacity: 0;
+        }
+
+        #game_emitter_container{
+            display: none;
+        }
+
+        #game_name_emitter{
+            position: absolute;
+            color: white;
+            text-align: center;
+            top: 35%;
+            font-size: 70px;
+            font-family: "Chakra Petch";
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 35;
+
+        }
+        #game_pause_emitter{
+            font-size: 20px;
+            position: absolute;
+            color: rgba(255, 255, 255, 0.775);
+            text-align: center;
+            font-family: "Chakra Petch";
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            z-index: 35;
+
+        }
+        
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOCK IN</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Schoolbell&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- linked css -->
+    <link rel="stylesheet" href="../css/name.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/category.css">
+    <link rel="stylesheet" href="../css/clicking.css">
+    <!-- <link rel="stylesheet" href="../css/leaderboard.css"> -->
+    <link rel="stylesheet" href="../css/switching.css">
+    <link rel="stylesheet" href="../css/tracking.css">
+    <link rel="stylesheet" href="../css/clicking/onetap.css">
+    <link rel="stylesheet" href="../css/clicking/headshot.css">
+    <link rel="stylesheet" href="../css/clicking/microshot.css">
+    <link rel="stylesheet" href="../css/switching/burstshot.css">
+</head>
+<body contextmenu="true">  
+
+    <img src="../assets/image/black.jpg" id="transitor">
+
+    <!-- Name Page -->
+    <div id="name_page">
+        <video id="name_back" draggable="false" src="../assets/video/lonely-samurai-autumn-tree-monochrome-moewalls-com.mp4"  autoplay loop muted></video>
+        
+        <form id="login_form">
+            <h1 id="name_login_head">Log In</h1>
+            <div id="form_login_inner_container">
+                <label id="name_login_username_label" for="name_login_username">Username</label>
+                <input id="name_login_username" type="text" maxlength="10" required>
+                <label id="name_login_password_label" for="name_login_password">Password</label>
+                <input id="name_login_password" type="password" maxlength="10" required>
+                <p id="name_forgot_password">Forgot Password</p>
+            </div>
+            <p id="login_error">Invalid Username or Password entered</p>
+            <p id="name_login_button"><b>lock in</b></p>
+
+            <p id="name_signup_direct">Doesn't have an account? <u>Sign up</u></p>
+        </form>
+
+        <form id="signup_form">
+            <h1 id="name_signup_head">Sign Up</h1>
+            <div id="form_signup_inner_container">
+                <label id="name_email_label" for="name_email">Email</label>
+                <input id="name_email" type="email" maxlength="25" required>
+                <label id="name_signup_username_label" for="name_signup_username">Username</label>
+                <input id="name_signup_username" type="text" maxlength="15" required>
+                <label id="name_signup_password_label" for="name_signup_password">Password</label>
+                <input id="name_signup_password" type="password" maxlength="15" required>
+            </div>
+            <p id="name_signup_button"><b>lock in</b></p>
+
+            <p id="name_login_direct">Already have an account? <u>Log in</u></p>
+        </form>
+        
+
+        <form id="name_forgot_password_page">
+            <h1 id="name_forgot_password_head">Forgot Password</h1>
+            <div id="form_forgot_password_inner_container">
+                <label id="name_forgot_password_email_label" for="name_forgot_password_email">Email</label>
+                <input id="name_forgot_password_email" type="email" maxlength="25" required>
+                <p id="name_forgot_password_button"><b>Submit</b></p>
+                <p id="name_forgot_password_back_button"><b>Back</b></p>
+            </div>
+        </form>
+
+        <form id="name_forgot_password_message_page">
+            <p id="name_forgot_password_message">Check your mail :]</p>
+            <p id="name_forgot_password_message_back_button"><b>Back</b></p>
+        </form>
+    </div>
+    <script>
+        var login_form = document.getElementById('login_form');
+        var signup_form = document.getElementById('signup_form');
+
+
+        var name_signup_direct = document.getElementById('name_signup_direct');
+        var name_login_direct = document.getElementById('name_login_direct');
+
+        var name_forgot_password = document.getElementById('name_forgot_password');
+        
+        //forgot password page
+        var name_forgot_password_page = document.getElementById('name_forgot_password_page');
+        var name_forgot_password_back_button = document.getElementById('name_forgot_password_back_button');
+        var name_forgot_password_button= document.getElementById('name_forgot_password_button');
+
+        //forgot password page2
+        var name_forgot_password_message_page= document.getElementById('name_forgot_password_message_page');
+    
+
+
+    name_signup_direct.addEventListener('click',function(){
+        login_form.style.display = 'none';
+        signup_form.style.display = 'block';
+    });
+
+    name_login_direct.addEventListener('click',function(){
+        login_form.style.display = 'block';
+        signup_form.style.display = 'none';
+    });
+
+    name_forgot_password.addEventListener('click',function(){
+        login_form.style.display = 'none';
+        name_forgot_password_page.style.display = 'block';
+    });
+
+    name_forgot_password_back_button.addEventListener('click',function(){
+        name_forgot_password_page.style.display = 'none';
+        login_form.style.display = 'block';
+    });
+
+    name_forgot_password_button.addEventListener('click',function(){
+        name_forgot_password_page.style.display = 'none';
+        name_forgot_password_message_page.style.display = 'block';
+        });
+
+    name_forgot_password_message_back_button.addEventListener('click',function(){
+        name_forgot_password_message_page.style.display = 'none';
+        login_form.style.display = 'block';
+        });
+    </script> 
+
+
+    <!-- intro Page -->
+    <img src="../assets/image/company_new.png" id="company_logo">
+    <img src="../assets/image/creator_logo.png" id="creator_logo">
+
+    
+    <!-- main_page -->
+    <img src="../assets/image/main_head.png" id="main_head">
+    <button id="main_play" >PLAY</button><br><br><br>
+    <!-- <button id="leaderboard">Leaderboard</button> -->
+    <button style="text-decoration:none;" id="settings">Settings</button><br><br><br>
+    <button style="text-decoration:none;"id="exit">Exit</button> 
+    <p id="barcode">LOCK IN</p>
+    <p id="version">VERSION 0.0.03</p>
+    <a href=" http://www.instagram.com/zharonn_" target="_blank"><p id="creator">zzz</p></a>
+    <video id="home_back" draggable="false" src="../assets/video/rainy-night-view-of-the-city-moewalls-com.mp4"  class="to_hide" autoplay loop muted></video>
+    
+    
+    <!-- category_page -->
+    <video id="category_back" draggable="false" src="../assets/video/dystopian-night-city-cyberpunk-2077-moewalls-com.mp4"  autoplay loop muted></video>
+    <h1 id="category_head">Scenario</h1>
+    <div id="category_container">
+        <button id="clicking_box">Clicking</button>
+        <button id="switching_box">Switching</button>
+        <button id="tracking_box">Tracking</button>
+    </div>
+    <h1 id="about_category"></h1>
+    <h1 id="go_back">< BACK</h1>
+
+    
+    <!-- Clicking_page -->
+    <div id="clicking_page">
+        <video id="clicking_back" draggable="false" src="../assets/video/desert-moewalls-com.mp4"  autoplay loop muted></video>
+        <h1 id="clicking_head">Clicking</h1>
+        <p id="clicking_para">Clicking focuses on enhancing your ability to hit precise, single shots quickly and accurately. This skill is vital for games where headshots or pinpoint accuracy can make the difference in combat. Practicing clicking can significantly improve your reaction time and shot precision.</p>
+        <h1 id="clicking_event_head">Events:</h1>
+        <img src="../assets/image/line.png" id="clicking_line_design" alt="line">
+    
+        <div id="clicking_main_container">
+            <h1 id="clicking_main_container_head"></h1>
+            <p id="clicking_main_container_content"></p>
+            <p id="clicking_main_container_preview_head">Preview</p>
+            <video id="clicking_main_container_preview" autoplay loop muted >
+                <source src="../assets/video/cyborg-moewalls-com.mp4" type="video/mp4">
+            </video>
+            <img src="../assets/image/line.png" id="clicking_line_design2" alt="line2">
+            <div>
+                <h1 id="clicking_note">Note:</h1>
+
+                <ul id="clicking_note_list">
+                    <li>Click <b>P</b> to pause the game.</li>
+                    <li>Restarting the browser may end up in relaunching the game.</li>
+                    <li>Clicking Esc Button will close the fullscreen mode (it wont pause the game)</li>
+                    <li>Have fun!</li>
+                </ul>
+            </div> 
+            <button id="start_clicking">Play</button>
+        </div>
+
+        <div id="clicking_event_container">
+            <button class="clicking_button_common" id="gridshot_button" onmouseenter="over_gridshot()" onmouseleave="leave_clicking_button()" >Grid Shot</button>
+            <button class="clicking_button_common" id="microshot_button" onmouseenter="over_microshot()" onmouseleave="leave_clicking_button()">Micro Shot</button>
+            <button class="clicking_button_common" id="onetap_button" onmouseenter="over_onetap()" onmouseleave="leave_clicking_button()">One Taps</button>
+            <button class="clicking_button_common" id="headshot_button" onmouseenter="over_headshot()" onmouseleave="leave_clicking_button()">Head Shot</button>
+        </div>
+        <p id="go_back_clicking"><b>< BACK</b></P>
+    </div>
+    
+    <!-- Switching_page -->
+    <div id="switching_page">
+        <video id="switching_back" draggable="false" src="../assets/video/space-portal-moewalls-com.mp4" loop autoplay muted></video>
+        <h1 id="switching_head">Switching</h1>
+        <p id="switching_para">Switching is an aim training exercise focused on quickly and accurately switching between targets. This practice sharpens reflexes, improves precision, and enhances target prioritization skills. It's essential for players looking to excel in fast-paced shooter games where quick target transitions are critical for success.</p>
+        <h1 id="switching_event_head">Events:</h1>
+        <img src="../assets/image/line.png" id="switching_line_design" alt="line">
+    
+        <div id="switching_main_container">
+            <h1 id="switching_main_container_head"></h1>
+            <p id="switching_main_container_content"></p>
+            <p id="switching_main_container_preview_head">Preview</p>
+
+            <video id="switching_main_container_preview" autoplay loop muted >
+                <source src="../assets/video/cyborg-moewalls-com.mp4" type="video/mp4">
+            </video>
+            <img src="../assets/image/line.png" id="switching_line_design2" alt="line2">
+        
+
+            <div>
+                <h1 id="switching_note">Note:</h1>
+
+                <ul id="switching_note_list">
+                    <li>Click <b>P</b> to pause the game.</li>
+                    <li>Restarting the browser may end up in relaunching the game.</li>
+                    <li>Clicking Esc Button will close the fullscreen mode (it wont pause the game)</li>
+                    <li>Have fun!</li>
+                </ul>
+            </div>
+            
+            
+            <button id="start_switching">Play</button>
+        </div>
+
+        <div id="switching_event_container">
+            <button class="switching_button_common" id="multitap_button" onmouseenter="over_multitap()" onmouseleave="leave_switching_button()" >Multi Taps</button>
+            <button class="switching_button_common" id="burst_button" onmouseenter="over_burst()" onmouseleave="leave_switching_button()">Burst Shot</button>
+            <button class="switching_button_common" id="maptap_button" onmouseenter="over_maptap()" onmouseleave="leave_switching_button()">Map Switch</button>
+            <button class="switching_button_common" id="deathtap_button" onmouseenter="over_deathtap()" onmouseleave="leave_switching_button()">Death Shot</button>
+        </div>
+
+        <p id="go_back_switching"><b>< BACK</b></P>
+        
+    </div>
+
+
+    <!-- tracking page -->
+    <div id="tracking_page">
+        <video id="tracking_back" draggable="false" src="../assets/video/space-hole-in-the-universe-moewalls-com.mp4"  autoplay loop muted></video>
+        <h1 id="tracking_head">Tracking</h1>
+        <p id="tracking_para">Tracking is a vital aim training exercise focused on maintaining precise crosshair alignment with moving targets. Essential for games requiring sustained accuracy, it improves your ability to consistently follow and engage dynamic opponents, enhancing your in-game performance.</p>
+        <h1 id="tracking_event_head">Events:</h1>
+        <img src="../assets/image/line.png" id="tracking_line_design" alt="line">
+    
+        <div id="tracking_main_container">
+            <h1 id="tracking_main_container_head"></h1>
+            <p id="tracking_main_container_content"></p>
+            <p id="tracking_main_container_preview_head">Preview</p>
+
+            <video id="tracking_main_container_preview" autoplay loop muted >
+                <source src="../assets/video/cyborg-moewalls-com.mp4" type="video/mp4">
+            </video>
+            <img src="../assets/image/line.png" id="tracking_line_design2" alt="line2">
+        
+
+            <div>
+                <h1 id="tracking_note">Note:</h1>
+
+                <ul id="tracking_note_list">
+                    <li>Click <b>P</b> to pause the game.</li>
+                    <li>Restarting the browser may end up in relaunching the game.</li>
+                    <li>tracking Esc Button will close the fullscreen mode (it wont pause the game)</li>
+                    <li>Have fun!</li>
+                </ul>
+            </div>
+            
+            
+            <button id="start_tracking">Play</button>
+        </div>
+
+        <div id="tracking_event_container">
+            <button class="tracking_button_common" id="singletrack_button" onmouseenter="over_singletrack()" onmouseleave="leave_tracking_button()">Single Track</button>
+            <button class="tracking_button_common" id="parallel_button" onmouseenter="over_parallel()" onmouseleave="leave_tracking_button()">Parallel</button>
+            <button class="tracking_button_common" id="runner_button" onmouseenter="over_runner()" onmouseleave="leave_tracking_button()">Runner</button>
+            <button class="tracking_button_common" id="evadetrack_button" onmouseenter="over_evadetrack()" onmouseleave="leave_tracking_button()">Evade Track</button>
+        </div>
+
+        <p id="go_back_tracking"><b>< BACK</b></P>
+        
+    </div>
+
+
+
+    <!-- leaderboard_page -->
+    <!-- <div id="leaderboard_page">
+        <h1 id="leaderboard_head">Leaderboard</h1>
+        <p id="leaderboard_description">The leaderboard is a dynamic ranking system showcasing the top performers in various aim training exercises. It updates in real-time, allowing players to see where they stand globally or among friends. Compete to improve your scores and climb the ranks!</p>
+        <p id="leaderboard_type_head">Events: </p>
+        <video id="leaderboard_back" draggable="false" src="../assets/video/alps-mountain-moewalls-com.mp4"  autoplay loop muted></video>
+        
+
+        <img src="../assets/image/line.png" alt="line1" id="leaderboard_line1">
+        <h1 id="leaderboard_table_head">Masters of <u>LOCK IN</u></h1>
+        <img src="../assets/image/line.png" alt="line2" id="leaderboard_line2">
+
+        <div id="leaderboard_table_container">
+
+            <div id="first_player" class="leaderboard_table_button_common">
+                <p id="first_player_name" class="leaderboard_player_name_common">O_Player1</p>
+                <p id="first_player_score">O_9978</p>
+            </div>
+
+            <div id="second_player" class="leaderboard_table_button_common">
+                <p id="second_player_name" class="leaderboard_player_name_common">O_Player2</p>
+                <p id="second_player_score">O_8056</p>
+            </div>
+
+            <div id="third_player" class="leaderboard_table_button_common">
+                <p id="third_player_name" class="leaderboard_player_name_common">O_Player3</p>
+                <p id="third_player_score">O_8007</p>
+            </div>
+
+            <div id="fourth_player" class="leaderboard_table_button_common">
+                <p id="fourth_player_name" class="leaderboard_player_name_common">O_Player4</p>
+                <p id="fourth_player_score">O_7568</p>
+            </div>
+
+            <div id="fifth_player" class="leaderboard_table_button_common">
+                <p id="fifth_player_name" class="leaderboard_player_name_common">O_Player5</p>
+                <p id="fifth_player_score">O_6989</p>
+            </div>
+
+        </div>
+
+        <div id="leaderboard_type">
+            <button class="leaderboard_type_button" id="overall_rank_button" onclick="overall_active()">Overall</button><br>
+            <button class="leaderboard_type_button" id="clicking_rank_button" onclick="clicking_active()">Clicking</button><br>
+            <button class="leaderboard_type_button" id="switching_rank_button" onclick="switching_active()">Switching</button><br>
+            <button class="leaderboard_type_button" id="tracking_rank_button" onclick="tracking_active()">Tracking</button><br>
+        </div>
+        <p id="go_back_leaderboard"><b>< BACK</b></p>
+    </div> -->
+
+
+<!-- Games -->
+ <div id="game_emitter_container">
+    <h1 id="game_name_emitter"></h1>
+    <h1 id="game_pause_emitter">Click <b>P</b> to pause</h1>
+ </div>
+
+<!-- Clicking_Games -->
+<!-- OneTap -->
+<div id="onetap_page">
+
+    <h1 id="ticker_data_onetap">Click to Start!</h1>
+    <img src="../html/games_html/game-back.jpg" id="game_back_onetap" draggable="false">   <!-- main_background -->
+    <img src="../html/games_html/game-back.jpg" id="game_back2_onetap" draggable="false">  <!-- point system -->
+    <img src="../html/games_html/game-back.jpg" id="game_back3_onetap" draggable="false">  <!-- game starter -->
+    <img src="../html/games_html/game-back.jpg" id="backgroundpauser_onetap" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="onetap_pause_button" alt="pause_button">
+
+
+    <div id="onetap_system_container">
+        <div id="score_div_onetap">
+            <p id="score_onetap">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_onetap">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_onetap">0:59</p>
+        </div>
+        <div id="accuracy_div_onetap">
+            <p id="accuracy_onetap">0%</p>
+        </div>
+    </div>
+    
+    <button id="ball_onetap">‎ </button>
+
+    <div id="onetap_menu_container">
+        <img src="../html/games_html/game-back.jpg" id="pause_menu_onetap" draggable="false">  <!-- pause -->
+        <p id="resume_onetap" class="onetap_menu_container_items">RESUME</p>
+        <p id="restart_onetap"class="onetap_menu_container_items">RESTART</p>
+        <p id="exit_onetap" class="onetap_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+<!-- HeadShot -->
+<div id="headshot_page">
+    <h1 id="ticker_data_headshot">Click to Start!</h1>
+    <img src="../html/games_html/game-back.jpg" id="game_back_headshot" draggable="false">   <!-- main_background -->
+    <img src="../html/games_html/game-back.jpg" id="game_back2_headshot" draggable="false">  <!-- point system -->
+    <img src="../html/games_html/game-back.jpg" id="game_back3_headshot" draggable="false">  <!-- game starter -->
+    <img src="../html/games_html/game-back.jpg" id="backgroundpauser_headshot" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="headshot_pause_button" alt="pause_button">
+
+
+    <div id="headshot_system_container">
+        <div id="score_div_headshot">
+            <p id="score_headshot">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_headshot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_headshot">0:59</p>
+        </div>
+        <div id="accuracy_div_headshot">
+            <p id="accuracy_headshot">0%</p>
+        </div>
+    </div>
+    
+    <button id="ball_headshot">‎ </button>
+
+    <div id="headshot_menu_container">
+        <img src="../html/games_html/game-back.jpg" id="pause_menu_headshot" draggable="false">  <!-- pause -->
+        <p id="resume_headshot" class="headshot_menu_container_items">RESUME</p>
+        <p id="restart_headshot"class="headshot_menu_container_items">RESTART</p>
+        <p id="exit_headshot" class="headshot_menu_container_items">EXIT</p>
+     </div>
+
+</div>
+
+<!-- microshot -->
+<div id="microshot_page">
+    <h1 id="ticker_data_microshot">Click to Start!</h1>
+    <img src="../html/games_html/game-back.jpg" id="game_back_microshot" draggable="false">   <!-- main_background -->
+    <img src="../html/games_html/game-back.jpg" id="game_back2_microshot" draggable="false">  <!-- point system -->
+    <img src="../html/games_html/game-back.jpg" id="game_back3_microshot" draggable="false">  <!-- game starter -->
+    <img src="../html/games_html/game-back.jpg" id="backgroundpauser_microshot" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="microshot_pause_button" alt="pause_button">
+    <div id="microshot_ground">
+        <button id="ball_microshot">‎ </button>
+    </div>
+
+    <div id="microshot_system_container">
+        <div id="score_div_microshot">
+            <p id="score_microshot">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_microshot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_microshot">0:59</p>
+        </div>
+        <div id="accuracy_div_microshot">
+            <p id="accuracy_microshot">0%</p>
+        </div>
+    </div>
+    
+    <div id="microshot_menu_container">
+        <img src="../html/games_html/game-back.jpg" id="pause_menu_microshot" draggable="false">  <!-- pause -->
+        <p id="resume_microshot" class="microshot_menu_container_items">RESUME</p>
+        <p id="restart_microshot"class="microshot_menu_container_items">RESTART</p>
+        <p id="exit_microshot" class="microshot_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+
+<!-- Switching -->
+
+<!-- burstshot -->
+<div id="burstshot_page">
+    <h1 id="ticker_data_burstshot">Click to Start!</h1>
+    <img src="../html/games_html/game-back.jpg" id="game_back_burstshot" draggable="false">   <!-- main_background -->
+    <img src="../html/games_html/game-back.jpg" id="game_back2_burstshot" draggable="false">  <!-- point system -->
+    <img src="../html/games_html/game-back.jpg" id="game_back3_burstshot" draggable="false">  <!-- game starter -->
+    <img src="../html/games_html/game-back.jpg" id="backgroundpauser_burstshot" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="burstshot_pause_button" alt="pause_button">
+    <div id="burstshot_ground">
+        <button id="ball_burstshot">‎ </button>
+        <button id="midball_burstshot">‎ </button>
+    </div>
+
+    <div id="burstshot_system_container">
+        <div id="score_div_burstshot">
+            <p id="score_burstshot">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_burstshot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_burstshot">0:59</p>
+        </div>
+        <div id="accuracy_div_burstshot">
+            <p id="accuracy_burstshot">0%</p>
+        </div>
+    </div>
+    <div id="burstshot_menu_container">
+        <img src="../html/games_html/game-back.jpg" id="pause_menu_burstshot" draggable="false">  <!-- pause -->
+        <p id="resume_burstshot" class="burstshot_menu_container_items">RESUME</p>
+        <p id="restart_burstshot"class="burstshot_menu_container_items">RESTART</p>
+        <p id="exit_burstshot" class="burstshot_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+
+
+
+    <!-- main_audio -->
+    <audio id="audioPlayer" autoplay loop>
+        <source src="../assets/music/stranger-things-124008.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!-- Scroll_Button -->
+    <audio id="button_scroll">
+        <source src="../assets/music/click-button-menu-147349.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <!-- category_Button -->
+    <audio id="button_category_sound">
+        <source src="../assets/music/button_category.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Scripts -->
+    <script src="../js/draggable.js"></script>
+
+
+    <!-- starter package -->
+    <script src="../js/starter_package.js"></script>
+
+    <!-- Game_Package -->
+    <script src="../js/game_package.js"></script>
+
+    <!-- Closing Window -->
+    <script src="../js/exit_app.js"></script>
+
+    <!-- page_scripts -->
+    <script src="../js/category_page.js"></script>
+    <script src="../js/clicking.js"></script>
+    <!-- <script src="../js/leaderboard.js"></script> -->
+    <script src="../js/switching.js"></script>
+    <script src="../js/tracking.js"></script>
+    <script src="../js/game_js/onetap.js"></script>
+    <script src="../js/game_js/headshot.js"></script>
+    <script src="../js/game_js/microshot.js"></script>
+    <script src="../js/game_js/burstshot.js"></script>
+</body>
+</html>
