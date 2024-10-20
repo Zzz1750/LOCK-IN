@@ -167,7 +167,10 @@ function call_microshotover(){
     ball_microshot.style.display='none';
     microshot_pause_button.style.display='none';
     microshot_ground.style.display='none'
-    console.log("Score: "+score_decider_microshot+"\nAccuracy:"+accuracy_decider_microshot);
+    setTimeout(function(){
+        result_screen(score_decider_microshot,accuracy_decider_microshot,microshot_page,'Result <br>Micro<span style="color: red;">Shot',clicking_page, 'Micro<span style="color: red;">Shot</span>');
+        microshot_isrestarted();    
+    },3000); 
 }
 
 var i_microshot=0;

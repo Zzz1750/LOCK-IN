@@ -161,7 +161,10 @@ function call_headshotover(){
     ticker_data_headshot.innerHTML='Game Over';
     ball_headshot.style.display='none';
     headshot_pause_button.style.display='none';
-    console.log("Score: "+score_decider_headshot+"\nAccuracy:"+accuracy_decider_headshot);
+    setTimeout(function(){
+        result_screen(score_decider_headshot,accuracy_decider_headshot,headshot_page,'Result <br>Head<span style="color: red;">Shot',clicking_page, 'Head<span style="color: red;">Shot</span>');
+        headshot_isrestarted();    
+    },3000);
 }
 
 var i_headshot=0;

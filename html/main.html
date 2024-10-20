@@ -85,10 +85,16 @@
     <!-- <link rel="stylesheet" href="../css/leaderboard.css"> -->
     <link rel="stylesheet" href="../css/switching.css">
     <link rel="stylesheet" href="../css/tracking.css">
+    <link rel="stylesheet" href="../css/result_page.css">
+
     <link rel="stylesheet" href="../css/clicking/onetap.css">
     <link rel="stylesheet" href="../css/clicking/headshot.css">
     <link rel="stylesheet" href="../css/clicking/microshot.css">
     <link rel="stylesheet" href="../css/switching/burstshot.css">
+    <link rel="stylesheet" href="../css/switching/multishot.css">
+    <link rel="stylesheet" href="../css/clicking/gridshot.css">
+
+    
 </head>
 <body contextmenu="true">  
 
@@ -407,13 +413,76 @@
     </div> -->
 
 
-<!-- Games -->
+<!-- Games Emitter -->
  <div id="game_emitter_container">
     <h1 id="game_name_emitter"></h1>
     <h1 id="game_pause_emitter">Click <b>P</b> to pause</h1>
  </div>
 
+<!-- Result Page -->
+<div id="result_page">
+    <h1 id="result_head"></span></h1>
+    <video src="../assets/video/golden-temple-ghost-of-tsushima-moewalls-com.mp4" id="result_back" autoplay loop muted></video>
+    <div id="result_decor"></div>
+
+    <div id="result_bracket">
+        <h1 id="result_bracket_head" class="result_bracket_heads">LOCK IN</h1>
+        <h1 id="current_result_bracket_head" class="result_bracket_heads">CURRENT SCORE</h1>
+        <h1 id="past_result_bracket_head" class="result_bracket_heads">HIGH SCORE</h1>
+
+    
+        <div id="current_result_bracket" class="result_inner_bracket">
+            <p id="result_score" class="result_output_class">Score :</p>
+            <p id="result_accuracy" class="result_output_class">Accuracy :</p>
+        </div>
+        <div id="past_result_bracket" class="result_inner_bracket">
+            <p id="result_past_score" class="result_output_class">Score :</p>
+            <p id="result_past_accuracy" class="result_output_class">Accuracy :</p>
+        </div>
+        
+        <button id="exit_result" class="result_button">EXIT</button>
+        <button id="replay_result" class="result_button">REPLAY</button>
+    </div>
+</div>
+
 <!-- Clicking_Games -->
+<!-- GridShot -->
+<div id="gridshot_page">
+    <h1 id="ticker_data_gridshot">Click to Start!</h1>
+    <img src="../html/games_html/game-back.jpg" id="game_back_gridshot" draggable="false">   <!-- main_background -->
+    <img src="../html/games_html/game-back.jpg" id="game_back2_gridshot" draggable="false">  <!-- point system -->
+    <img src="../html/games_html/game-back.jpg" id="game_back3_gridshot" draggable="false">  <!-- game starter -->
+    <img src="../html/games_html/game-back.jpg" id="backgroundpauser_gridshot" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="gridshot_pause_button" alt="pause_button">
+    <div id="gridshot_ground">
+        <button id="ball_gridshot">‎ </button>
+        <button id="ball_gridshot2">‎ </button>
+        <button id="ball_gridshot3">‎ </button>
+    </div>
+
+    <div id="gridshot_system_container">
+        <div id="score_div_gridshot">
+            <p id="score_gridshot">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_gridshot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_gridshot">0:59</p>
+        </div>
+        <div id="accuracy_div_gridshot">
+            <p id="accuracy_gridshot">0%</p>
+        </div>
+    </div>
+    
+    <div id="gridshot_menu_container">
+        <img src="../html/games_html/game-back.jpg" id="pause_menu_gridshot" draggable="false">  <!-- pause -->
+        <p id="resume_gridshot" class="gridshot_menu_container_items">RESUME</p>
+        <p id="restart_gridshot"class="gridshot_menu_container_items">RESTART</p>
+        <p id="exit_gridshot" class="gridshot_menu_container_items">EXIT</p>
+    </div>
+</div>
+
 <!-- OneTap -->
 <div id="onetap_page">
 
@@ -489,10 +558,10 @@
 <!-- microshot -->
 <div id="microshot_page">
     <h1 id="ticker_data_microshot">Click to Start!</h1>
-    <img src="../html/games_html/game-back.jpg" id="game_back_microshot" draggable="false">   <!-- main_background -->
-    <img src="../html/games_html/game-back.jpg" id="game_back2_microshot" draggable="false">  <!-- point system -->
-    <img src="../html/games_html/game-back.jpg" id="game_back3_microshot" draggable="false">  <!-- game starter -->
-    <img src="../html/games_html/game-back.jpg" id="backgroundpauser_microshot" draggable="false">    <!-- game_over -->
+    <img src="./games_html/game-back.jpg" id="game_back_microshot" draggable="false">   <!-- main_background -->
+    <img src="./games_html/game-back.jpg" id="game_back2_microshot" draggable="false">  <!-- point system -->
+    <img src="./games_html/game-back.jpg" id="game_back3_microshot" draggable="false">  <!-- game starter -->
+    <img src="./games_html/game-back.jpg" id="backgroundpauser_microshot" draggable="false">    <!-- game_over -->
 
 
     <img src="../assets/image/pause.png" id="microshot_pause_button" alt="pause_button">
@@ -514,7 +583,7 @@
     </div>
     
     <div id="microshot_menu_container">
-        <img src="../html/games_html/game-back.jpg" id="pause_menu_microshot" draggable="false">  <!-- pause -->
+        <img src="./games_html/game-back.jpg" id="pause_menu_microshot" draggable="false">  <!-- pause -->
         <p id="resume_microshot" class="microshot_menu_container_items">RESUME</p>
         <p id="restart_microshot"class="microshot_menu_container_items">RESTART</p>
         <p id="exit_microshot" class="microshot_menu_container_items">EXIT</p>
@@ -556,6 +625,42 @@
         <p id="resume_burstshot" class="burstshot_menu_container_items">RESUME</p>
         <p id="restart_burstshot"class="burstshot_menu_container_items">RESTART</p>
         <p id="exit_burstshot" class="burstshot_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+<!-- multishot -->
+<div id="multishot_page">
+    <h1 id="ticker_data_multishot">Click to Start!</h1>
+    <img src="./games_html/game-back.jpg" id="game_back_multishot" draggable="false">   <!-- main_background -->
+    <img src="./games_html/game-back.jpg" id="game_back2_multishot" draggable="false">  <!-- point system -->
+    <img src="./games_html/game-back.jpg" id="game_back3_multishot" draggable="false">  <!-- game starter -->
+    <img src="./games_html/game-back.jpg" id="backgroundpauser_multishot" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="multishot_pause_button" alt="pause_button">
+    <div id="multishot_ground">
+        <button id="ball_multishot">‎ </button>
+        <button id="ball_multishot2">‎ </button>
+    </div>
+
+    <div id="multishot_system_container">
+        <div id="score_div_multishot">
+            <p id="score_multishot">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_multishot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_multishot">0:59</p>
+        </div>
+        <div id="accuracy_div_multishot">
+            <p id="accuracy_multishot">0%</p>
+        </div>
+    </div>
+    
+    <div id="multishot_menu_container">
+        <img src="./games_html/game-back.jpg" id="pause_menu_multishot" draggable="false">  <!-- pause -->
+        <p id="resume_multishot" class="multishot_menu_container_items">RESUME</p>
+        <p id="restart_multishot"class="multishot_menu_container_items">RESTART</p>
+        <p id="exit_multishot" class="multishot_menu_container_items">EXIT</p>
     </div>
 </div>
 
@@ -602,5 +707,7 @@
     <script src="../js/game_js/headshot.js"></script>
     <script src="../js/game_js/microshot.js"></script>
     <script src="../js/game_js/burstshot.js"></script>
+    <script src="../js/game_js/multishot.js"></script>
+    <script src="../js/game_js/gridshot.js"></script>
 </body>
 </html>

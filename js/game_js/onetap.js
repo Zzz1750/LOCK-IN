@@ -152,17 +152,6 @@ function onetap_isrestarted(){
 
 }
 
-//Game over
-function call_onetapover(){
-    game_over_onetap=1;
-    ticker_data_onetap.style.display='block';
-    backgroundpauser_onetap.style.display='block';
-    ticker_data_onetap.style.fontSize='100px';
-    ticker_data_onetap.innerHTML='Game Over';
-    ball_onetap.style.display='none';
-    onetap_pause_button.style.display='none';
-    console.log("Score: "+score_decider_onetap+"\nAccuracy:"+accuracy_decider_onetap);
-}
 
 var i_onetap=0;
 var j_onetap=0;
@@ -238,3 +227,20 @@ exit_onetap.addEventListener('click',function(){
         },1000)
     },1000)
 })
+
+
+//Game over
+function call_onetapover(){
+    game_over_onetap=1;
+    ticker_data_onetap.style.display='block';
+    backgroundpauser_onetap.style.display='block';
+    ticker_data_onetap.style.fontSize='100px';
+    ticker_data_onetap.innerHTML='Game Over';
+    ball_onetap.style.display='none';
+    onetap_pause_button.style.display='none';
+    setTimeout(function(){
+        result_screen(score_decider_onetap,accuracy_decider_onetap,onetap_page,'Result <br>One<span style="color: red;">Tap',clicking_page, 'One<span style="color: red;">Tap</span>');
+        onetap_isrestarted();    
+    },3000);
+
+}

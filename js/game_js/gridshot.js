@@ -137,6 +137,7 @@ function gridshot_isresumed(){
     ball_gridshot3.style.display='block';
     gridshot_menu_container.style.display='none';
     gridshot_system_container.style.display='block';
+    gridshot_ground.style.display='block';
 }
 
 
@@ -159,15 +160,6 @@ function gridshot_isrestarted(){
     time_gridshot.innerHTML = "0:59";
 
     gridshot_time=58;
-
-    ball_gridshot.style.top='40%';
-    ball_gridshot.style.left= '48%';
-
-    ball_gridshot2.style.top='40%';
-    ball_gridshot2.style.left= '40%';
-
-    ball_gridshot2.style.top='40%';
-    ball_gridshot2.style.left= '54%';
     clearInterval(timerInterval); // Clear any existing timer
 
 }
@@ -184,7 +176,10 @@ function call_gridshotover(){
     ball_gridshot3.style.display='none';
     gridshot_pause_button.style.display='none';
     gridshot_ground.style.display='none'
-    console.log("Score: "+score_decider_gridshot+"\nAccuracy:"+accuracy_decider_gridshot);
+    setTimeout(function(){
+        result_screen(score_decider_gridshot,accuracy_decider_gridshot,gridshot_page,'Result <br>Grid<span style="color: red;">Shot',clicking_page, 'Grid<span style="color: red;">Shot</span>');
+        gridshot_isrestarted();    
+    },3000);
 }
 
 var i_gridshot=0;
@@ -218,27 +213,15 @@ ball_gridshot.addEventListener('click', function(event) {
     event.stopPropagation(); // Prevents the event from bubbling up to the ground
 
     ball_gridshot_mover(ball_gridshot);
-    var new_value = Math.floor(Math.random() * (131 - 100) + 100);
-
-    score_decider_gridshot = score_decider_gridshot + new_value;
-    score_gridshot.innerHTML = score_decider_gridshot + " pts";
-
-    gridshot_hits++;
-    gridshot_accuracy_management();
+    gridshot_score_decider();
 });
 
 ball_gridshot2.addEventListener('click',function(){
     console.log('one ball2')
-    event.stopPropagation(); // Prevents the event from bubbling up to the ground
+    event.stopPropagation();
 
     ball_gridshot_mover(ball_gridshot2);
-    var new_value = Math.floor(Math.random() * (131 - 100) + 100);
-
-    score_decider_gridshot = score_decider_gridshot + new_value;
-    score_gridshot.innerHTML = score_decider_gridshot + " pts";
-
-    gridshot_hits++;
-    gridshot_accuracy_management();
+    gridshot_score_decider();
 });
 
 
@@ -247,6 +230,10 @@ ball_gridshot3.addEventListener('click',function(){
     event.stopPropagation(); // Prevents the event from bubbling up to the ground
 
     ball_gridshot_mover(ball_gridshot3);
+    gridshot_score_decider();
+});
+
+function gridshot_score_decider(){
     var new_value = Math.floor(Math.random() * (131 - 100) + 100);
 
     score_decider_gridshot = score_decider_gridshot + new_value;
@@ -254,26 +241,70 @@ ball_gridshot3.addEventListener('click',function(){
 
     gridshot_hits++;
     gridshot_accuracy_management();
-});
-
-
+}
 
 //ball mover
-function ball_gridshot_mover(ball){
+function ball_gridshot_mover(ball) {
     const groundWidth = gridshot_ground.offsetWidth;
     const groundHeight = gridshot_ground.offsetHeight;
     const ballWidth = ball.offsetWidth;
     const ballHeight = ball.offsetHeight;
 
-    let i_gridshot = Math.floor(Math.random() * (groundWidth - ballWidth));
-    let j_gridshot = Math.floor(Math.random() * (groundHeight - ballHeight));
+    let i_gridshot, j_gridshot;
+    let overlap = true;
 
+    const balls = [ball_gridshot, ball_gridshot2, ball_gridshot3];
+    const otherBalls = balls.filter(b => b !== ball);
 
+    let maxAttempts = 100;
+    let attempt = 0;
 
+    while (overlap && attempt < maxAttempts) {
+        overlap = false;
 
-    ball.style.left = i_gridshot + "px";
-    ball.style.top = j_gridshot + "px";
+        i_gridshot = Math.floor(Math.random() * (groundWidth - ballWidth));
+        j_gridshot = Math.floor(Math.random() * (groundHeight - ballHeight));
+
+        const newBallRect = {
+            left: i_gridshot,
+            right: i_gridshot + ballWidth,
+            top: j_gridshot,
+            bottom: j_gridshot + ballHeight
+        };
+
+        for (let otherBall of otherBalls) {
+            const otherBallRect = otherBall.getBoundingClientRect();
+            const groundRect = gridshot_ground.getBoundingClientRect();
+
+            const adjustedOtherBallRect = {
+                left: otherBallRect.left - groundRect.left,
+                right: otherBallRect.right - groundRect.left,
+                top: otherBallRect.top - groundRect.top,
+                bottom: otherBallRect.bottom - groundRect.top
+            };
+
+            if (!(newBallRect.right < adjustedOtherBallRect.left ||
+                  newBallRect.left > adjustedOtherBallRect.right ||
+                  newBallRect.bottom < adjustedOtherBallRect.top ||
+                  newBallRect.top > adjustedOtherBallRect.bottom)) {
+                overlap = true;
+                break;
+            }
+        }
+
+        attempt++;
+    }
+
+    if (!overlap) {
+        ball.style.left = i_gridshot + "px";
+        ball.style.top = j_gridshot + "px";
+    } else {
+        console.error('Could not find a non-overlapping position after ' + maxAttempts + ' attempts.');
+    }
 }
+
+
+
 
 exit_gridshot.addEventListener('click',function(){
     black_transistor.style.opacity='0';

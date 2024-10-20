@@ -170,7 +170,10 @@ function call_burstshotover(){
     ball_burstshot.style.display='none';
     burstshot_pause_button.style.display='none';
     burstshot_ground.style.display='none'
-    console.log("Score: "+score_decider_burstshot+"\nAccuracy:"+accuracy_decider_burstshot);
+    setTimeout(function(){
+        result_screen(score_decider_burstshot,accuracy_decider_burstshot,burstshot_page,'Result <br>Burst<span style="color: red;">Shot',switching_page, 'Burst<span style="color: red;">Shot</span>');
+        burstshot_isrestarted();    
+    },2000);
 }
 
 var i_burstshot=0;

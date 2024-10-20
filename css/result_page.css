@@ -1,0 +1,128 @@
+#result_page{
+    display: none;
+}
+#result_back{
+    position: fixed;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    opacity: 0.3;
+}
+@font-face {
+    font-family: 'buts';
+    src: url("../assets/font/ValorantFont.ttf");
+}
+#result_head{
+    font-family: 'buts';
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 55px;
+    position: absolute;
+    left: 3%;
+    top: 5%;
+    letter-spacing: 8px;
+    margin: 0;
+}
+#result_decor{
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top:0;    
+}
+#result_bracket{
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    width: 800px;
+    height: 450px;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 30px;
+}
+#result_accuracy{
+    top: 50%;
+    left: 70%;
+
+}
+#result_score{  
+    top: 25%;
+    left: 70%;
+}
+#result_past_score{
+    top: 25%;
+    left: 70%;
+}
+#result_past_accuracy{
+    top: 50%;
+    left: 70%;
+}
+.result_output_class{
+    font-size: 20px;
+    font-family: 'buts';
+    color: rgba(255, 255, 255, 0.8);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    width: 300px;
+}
+.result_bracket_heads{
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.4);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    
+}
+#result_bracket_head{
+    left: 50%;
+    top: 2%;
+}
+#current_result_bracket_head{
+    color: rgba(255, 255, 255, 0.6);
+    left: 25%;
+    top: 15%;
+    letter-spacing: 1px;
+}
+#past_result_bracket_head{
+    color: rgba(255, 255, 255, 0.6);
+    left: 75%;
+    top: 15%;
+    letter-spacing: 1px;
+}
+#current_result_bracket{
+    left: 25%;
+}
+#past_result_bracket{
+    left: 75%;
+}
+.result_inner_bracket{
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 300px;
+    height: 200px;
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%,-50%);
+    border-radius: 30px;   
+}
+.result_button{
+    position: absolute;
+    bottom: 10%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 50px;
+    cursor: pointer;
+}
+#exit_result{
+    left: 35%;
+}
+#replay_result{
+    left: 50%;
+}
