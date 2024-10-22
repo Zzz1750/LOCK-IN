@@ -239,7 +239,7 @@ function call_onetapover(){
     ball_onetap.style.display='none';
     onetap_pause_button.style.display='none';
     setTimeout(function(){
-        result_screen(score_decider_onetap,accuracy_decider_onetap,onetap_page,'Result <br>One<span style="color: red;">Tap',clicking_page, 'One<span style="color: red;">Tap</span>');
+        result_screen(score_decider_onetap,accuracy_decider_onetap,onetap_page,'Result <br>One<span style="color: red;">Tap',clicking_page, 'One<span style="color: red;">Tap</span>','onetap_page');
         onetap_isrestarted();    
     },3000);
 

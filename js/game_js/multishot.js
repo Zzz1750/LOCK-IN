@@ -177,7 +177,7 @@ function call_multishotover(){
     multishot_pause_button.style.display='none';
     multishot_ground.style.display='none'
     setTimeout(function(){
-        result_screen(score_decider_multishot,accuracy_decider_multishot,multishot_page,'Result <br>Multi<span style="color: red;">Shot',switching_page, 'Multi<span style="color: red;">Shot</span>');
+        result_screen(score_decider_multishot,accuracy_decider_multishot,multishot_page,'Result <br>Multi<span style="color: red;">Shot',switching_page, 'Multi<span style="color: red;">Shot</span>','mutishot_page');
         mapswitch_isrestarted();    
     },3000);}
 

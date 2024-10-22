@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/switching/deathshot.css">
+</head>
+<body>
+    <div id="deathshot_page">
+        <h1 id="ticker_data_deathshot">Click to Start!</h1>
+        <img src="./game-back.jpg" id="game_back_deathshot" draggable="false">   <!-- main_background -->
+        <img src="./game-back.jpg" id="game_back2_deathshot" draggable="false">  <!-- point system -->
+        <img src="./game-back.jpg" id="game_back3_deathshot" draggable="false">  <!-- game starter -->
+        <img src="./game-back.jpg" id="backgroundpauser_deathshot" draggable="false">    <!-- game_over -->
+
+
+        <img src="../../assets/image/pause.png" id="deathshot_pause_button" alt="pause_button">
+        <div id="deathshot_ground">
+            <button id="ball_deathshot">‎ </button>
+            <button id="ball_deathshot2">‎ </button>
+            <button id="ball_deathshot3">‎ </button>
+        </div>
+
+        <div id="deathshot_system_container">
+            <div id="score_div_deathshot">
+                <p id="score_deathshot">0 pts</p>
+            </div>
+            <div id="grishot_time_system_container">
+                <p id="time_margin_deathshot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+                <p id="time_deathshot">0:00</p>
+            </div>
+            <div id="accuracy_div_deathshot">
+                <p id="accuracy_deathshot">100%</p>
+            </div>
+        </div>
+        
+        <div id="deathshot_menu_container">
+            <img src="./game-back.jpg" id="pause_menu_deathshot" draggable="false">  <!-- pause -->
+            <p id="resume_deathshot" class="deathshot_menu_container_items">RESUME</p>
+            <p id="restart_deathshot"class="deathshot_menu_container_items">RESTART</p>
+            <p id="exit_deathshot" class="deathshot_menu_container_items">EXIT</p>
+        </div>
+    </div>
+    
+    <script src="../../js/game_js/deathshot.js"></script>
+</body>
+</html>

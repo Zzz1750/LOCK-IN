@@ -171,7 +171,7 @@ function call_burstshotover(){
     burstshot_pause_button.style.display='none';
     burstshot_ground.style.display='none'
     setTimeout(function(){
-        result_screen(score_decider_burstshot,accuracy_decider_burstshot,burstshot_page,'Result <br>Burst<span style="color: red;">Shot',switching_page, 'Burst<span style="color: red;">Shot</span>');
+        result_screen(score_decider_burstshot,accuracy_decider_burstshot,burstshot_page,'Result <br>Burst<span style="color: red;">Shot',switching_page, 'Burst<span style="color: red;">Shot</span>','burstshot_page');
         burstshot_isrestarted();    
     },2000);
 }

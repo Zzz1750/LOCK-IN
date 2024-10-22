@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/switching/mapswitch.css">
+</head>
+<body>
+    <div id="mapswitch_page">
+        <h1 id="ticker_data_mapswitch">Click to Start!</h1>
+        <img src="./game-back.jpg" id="game_back_mapswitch" draggable="false">   <!-- main_background -->
+        <img src="./game-back.jpg" id="game_back2_mapswitch" draggable="false">  <!-- point system -->
+        <img src="./game-back.jpg" id="game_back3_mapswitch" draggable="false">  <!-- game starter -->
+        <img src="./game-back.jpg" id="backgroundpauser_mapswitch" draggable="false">    <!-- game_over -->
+
+
+        <img src="../../assets/image/pause.png" id="mapswitch_pause_button" alt="pause_button">
+
+        <div id="map_layout">
+            <div id="color_ball"></div>
+        </div>
+
+        <div id="mapswitch_ground">
+            <button id="ball_mapswitch">‎ </button>
+            <button id="ball_mapswitch2">‎ </button>
+            <button id="ball_mapswitch3">‎ </button>
+        </div>
+
+        <div id="mapswitch_system_container">
+            <div id="score_div_mapswitch">
+                <p id="score_mapswitch">0 pts</p>
+            </div>
+            <div id="grishot_time_system_container">
+                <p id="time_margin_mapswitch">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+                <p id="time_mapswitch">0:59</p>
+            </div>
+            <div id="accuracy_div_mapswitch">
+                <p id="accuracy_mapswitch">0%</p>
+            </div>
+        </div>
+        
+        <div id="mapswitch_menu_container">
+            <img src="./game-back.jpg" id="pause_menu_mapswitch" draggable="false">  <!-- pause -->
+            <p id="resume_mapswitch" class="mapswitch_menu_container_items">RESUME</p>
+            <p id="restart_mapswitch"class="mapswitch_menu_container_items">RESTART</p>
+            <p id="exit_mapswitch" class="mapswitch_menu_container_items">EXIT</p>
+        </div>
+    </div>
+    
+    <script src="../../js/game_js/mapswitch.js"></script>
+</body>
+</html>

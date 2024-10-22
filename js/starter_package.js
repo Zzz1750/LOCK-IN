@@ -16,6 +16,10 @@ button_category_sound.pause();
 var company_logo=document.getElementById('company_logo');
 var creator_logo=document.getElementById('creator_logo');
 
+//settings_page
+var settings_page = document.getElementById('settings_page');
+var goback_settings = document.getElementById('goback_settings');
+
 //main_page
 var home_back = document.getElementById('home_back');
 var main_play= document.getElementById('main_play');
@@ -169,13 +173,13 @@ function call_name(){
     //         console.log('The text area is empty.');
     //     }}
 
-name_login_button.addEventListener('click',function(){
+
+
+function launch_lockin(){
     name_page.style.opacity=0;
     setTimeout(requestFullscreen,1000);
     setTimeout(intro_launcher,2000);    
-})
-
-
+}
 //requestFullscreen
 {
 function requestFullscreen() {
@@ -218,6 +222,13 @@ function intro_launcher(){
 
 function main_music(){
     audio.play();
+}
+
+function play_music(){
+    audio.play();
+}
+function stop_music(){
+    audio.pause();
 }
 
 //intro_animation
@@ -278,6 +289,8 @@ function main_music(){
     }
 }
 
+
+
 //category_page
 {
         main_play.addEventListener('click', function(){
@@ -318,6 +331,73 @@ function main_music(){
         function category_transitor_off_2(){
             transitor.style.display='none';
         }
+}
+
+//setting_page
+{
+    settings.addEventListener('click', function(){
+        settings_caller();
+        });
+        function settings_caller(){
+            transitor.style.display='block';
+            transitor.style.opacity=0;
+            setTimeout(settings_transitor,300)
+        }
+
+        function settings_transitor(){
+            transitor.style.opacity=1;
+            setTimeout(call_settings,300);
+        }
+        function call_settings(){
+            // leaderboard.style.display='none';
+            home_back.style.display='none';
+            main_play.style.display='none';
+            settings.style.display='none';
+            exit.style.display='none';
+            main_head.style.display='none';
+            
+            setTimeout(settings_transitor_off,300);
+        }
+        function settings_transitor_off(){
+            transitor.style.opacity=0;
+            settings_page.style.display='block';
+            setTimeout(settings_transitor_off_2,300);
+        }
+        function settings_transitor_off_2(){
+            transitor.style.display='none';
+        }
+}
+
+//settings_mainpage
+{
+    goback_settings.addEventListener('click', function(){
+        settings_to_main();
+    });
+    function settings_to_main(){
+        transitor.style.display='block';
+        setTimeout(main_settings_transitor,300)
+    }
+    function main_settings_transitor(){
+        transitor.style.opacity=1;
+        setTimeout(call_main_settings,300);
+    }
+    function call_main_settings(){
+        settings_page.style.display='none';
+        setTimeout(main_settings_transitor_off,300)
+    }
+    function main_settings_transitor_off(){
+        transitor.style.opacity=0;
+        home_back.style.display='block';
+        main_play.style.display='block';
+        settings.style.display='block';
+        // leaderboard.style.display='block';
+        exit.style.display='block';
+        main_head.style.display='block';
+        setTimeout(main_head_settings_transitor_off_2,300);
+    }
+    function main_head_settings_transitor_off_2(){
+        transitor.style.display='none';
+    }
 }
 
 

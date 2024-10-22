@@ -168,7 +168,7 @@ function call_microshotover(){
     microshot_pause_button.style.display='none';
     microshot_ground.style.display='none'
     setTimeout(function(){
-        result_screen(score_decider_microshot,accuracy_decider_microshot,microshot_page,'Result <br>Micro<span style="color: red;">Shot',clicking_page, 'Micro<span style="color: red;">Shot</span>');
+        result_screen(score_decider_microshot,accuracy_decider_microshot,microshot_page,'Result <br>Micro<span style="color: red;">Shot',clicking_page, 'Micro<span style="color: red;">Shot</span>','microshot_page');
         microshot_isrestarted();    
     },3000); 
 }

@@ -162,7 +162,7 @@ function call_headshotover(){
     ball_headshot.style.display='none';
     headshot_pause_button.style.display='none';
     setTimeout(function(){
-        result_screen(score_decider_headshot,accuracy_decider_headshot,headshot_page,'Result <br>Head<span style="color: red;">Shot',clicking_page, 'Head<span style="color: red;">Shot</span>');
+        result_screen(score_decider_headshot,accuracy_decider_headshot,headshot_page,'Result <br>Head<span style="color: red;">Shot',clicking_page, 'Head<span style="color: red;">Shot</span>','headshot_page');
         headshot_isrestarted();    
     },3000);
 }

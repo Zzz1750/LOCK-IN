@@ -177,7 +177,7 @@ function call_gridshotover(){
     gridshot_pause_button.style.display='none';
     gridshot_ground.style.display='none'
     setTimeout(function(){
-        result_screen(score_decider_gridshot,accuracy_decider_gridshot,gridshot_page,'Result <br>Grid<span style="color: red;">Shot',clicking_page, 'Grid<span style="color: red;">Shot</span>');
+        result_screen(score_decider_gridshot,accuracy_decider_gridshot,gridshot_page,'Result <br>Grid<span style="color: red;">Shot',clicking_page, 'Grid<span style="color: red;">Shot</span>','gridshot_page');
         gridshot_isrestarted();    
     },3000);
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/tracking/evadetrack.css">
+</head>
+<body>
+    <div id="evadetrack_page">
+
+        <h1 id="ticker_data_evadetrack">Click to Start!</h1>
+        <img src="./game-back.jpg" id="game_back_evadetrack" draggable="false">   <!-- main_background -->
+        <img src="./game-back.jpg" id="game_back2_evadetrack" draggable="false">  <!-- point system -->
+        <img src="./game-back.jpg" id="game_back3_evadetrack" draggable="false">  <!-- game starter -->
+        <img src="./game-back.jpg" id="backgroundpauser_evadetrack" draggable="false">    <!-- game_over -->
+
+
+        <img src="../../assets/image/pause.png" id="evadetrack_pause_button" alt="pause_button">
+
+
+        <div id="evadetrack_system_container">
+            <div id="score_div_evadetrack">
+                <p id="score_evadetrack">0 pts</p>
+            </div>
+            <div id="grishot_time_system_container">
+                <p id="time_margin_evadetrack">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+                <p id="time_evadetrack">0:59</p>
+            </div>
+            <div id="accuracy_div_evadetrack">
+                <p id="accuracy_evadetrack">0%</p>
+            </div>
+        </div>
+        
+        <button id="ball_evadetrack">‎ </button>
+
+
+        <!-- menu_part -->
+        <div id="evadetrack_menu_container">
+            <img src="./game-back.jpg" id="pause_menu_evadetrack" draggable="false">  <!-- pause -->
+            <p id="resume_evadetrack" class="evadetrack_menu_container_items">RESUME</p>
+            <p id="restart_evadetrack"class="evadetrack_menu_container_items">RESTART</p>
+            <p id="exit_evadetrack" class="evadetrack_menu_container_items">EXIT</p>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.body.onselectstart = function() {
+                return false;
+            }
+        }
+    </script>
+    <script src="../../js/game_js/evadetrack.js"></script>
+</body>
+</html>

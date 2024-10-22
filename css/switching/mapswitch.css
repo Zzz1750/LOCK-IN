@@ -1,9 +1,5 @@
-body{
-    background-color: black;
-    margin: 0;
-}
 #mapswitch_page{
-    display: block;
+    display: none;
 }
 #game_back_mapswitch{
     position: fixed;
@@ -66,7 +62,7 @@ body{
 }
 
 #ball_mapswitch{ 
-    background-color: rgb(60, 196, 238);
+    background-color: green;
     border: none;
     border-radius: 50px;
     width: 50px;
@@ -80,7 +76,7 @@ body{
 }
 
 #ball_mapswitch2{ 
-    background-color: rgb(60, 196, 238);
+    background-color: red;
     border: none;
     border-radius: 50px;
     width: 50px;
@@ -94,7 +90,7 @@ body{
 }
 
 #ball_mapswitch3{ 
-    background-color: rgb(60, 196, 238);
+    background-color: blue;
     border: none;
     border-radius: 50px;
     width: 50px;
@@ -256,4 +252,26 @@ body{
     transform: translate(-50%,-50%);
     z-index: 10;
     display: none;
+}
+#map_layout{
+    height: 200px;
+    width: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    margin: 0;
+    border-radius: 100px;
+    display: none;
+}
+#color_ball{
+    position: absolute;
+    background-color: red;
+    height: 15px;
+    width: 15px;
+    border: 2px solid ;
+    border-radius: 100px;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }

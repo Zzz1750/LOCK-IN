@@ -93,8 +93,13 @@
     <link rel="stylesheet" href="../css/switching/burstshot.css">
     <link rel="stylesheet" href="../css/switching/multishot.css">
     <link rel="stylesheet" href="../css/clicking/gridshot.css">
-
-    
+    <link rel="stylesheet" href="../css/switching/mapswitch.css">
+    <link rel="stylesheet" href="../css/switching/deathshot.css">
+    <link rel="stylesheet" href="../css/tracking/singletrack.css">
+    <link rel="stylesheet" href="../css/tracking/runner.css">
+    <link rel="stylesheet" href="../css/tracking/parallel.css">
+    <link rel="stylesheet" href="../css/tracking/evadetrack.css">
+    <link rel="stylesheet" href="../css/settings.css">
 </head>
 <body contextmenu="true">  
 
@@ -102,103 +107,67 @@
 
     <!-- Name Page -->
     <div id="name_page">
-        <video id="name_back" draggable="false" src="../assets/video/lonely-samurai-autumn-tree-monochrome-moewalls-com.mp4"  autoplay loop muted></video>
-        
+        <video id="name_back" draggable="false" src="../assets/video/lonely-samurai-autumn-tree-monochrome-moewalls-com.mp4" autoplay loop muted></video>
+        <p id="login_error"></p>
+   
+        <!-- Login Form -->
         <form id="login_form">
             <h1 id="name_login_head">Log In</h1>
             <div id="form_login_inner_container">
-                <label id="name_login_username_label" for="name_login_username">Username</label>
-                <input id="name_login_username" type="text" maxlength="10" required>
+                <label id="name_login_username_label" for="name_login_username">Email</label>
+                <input id="name_login_username" type="email" maxlength="20" required>
                 <label id="name_login_password_label" for="name_login_password">Password</label>
-                <input id="name_login_password" type="password" maxlength="10" required>
-                <p id="name_forgot_password">Forgot Password</p>
+                <input id="name_login_password" type="password" maxlength="20" required>
             </div>
-            <p id="login_error">Invalid Username or Password entered</p>
             <p id="name_login_button"><b>lock in</b></p>
-
-            <p id="name_signup_direct">Doesn't have an account? <u>Sign up</u></p>
+            <p id="name_signup_direct">Don't have an account? <u>Sign up</u></p>
         </form>
-
+    
+        <!-- Signup Form -->
         <form id="signup_form">
             <h1 id="name_signup_head">Sign Up</h1>
             <div id="form_signup_inner_container">
                 <label id="name_email_label" for="name_email">Email</label>
                 <input id="name_email" type="email" maxlength="25" required>
                 <label id="name_signup_username_label" for="name_signup_username">Username</label>
-                <input id="name_signup_username" type="text" maxlength="15" required>
+                <input id="name_signup_username" type="text" maxlength="20" required>
                 <label id="name_signup_password_label" for="name_signup_password">Password</label>
-                <input id="name_signup_password" type="password" maxlength="15" required>
+                <input id="name_signup_password" type="password" maxlength="20" required>
             </div>
-            <p id="name_signup_button"><b>lock in</b></p>
-
+            <p id="name_signup_button"><b>Sign up</b></p>
             <p id="name_login_direct">Already have an account? <u>Log in</u></p>
         </form>
-        
-
-        <form id="name_forgot_password_page">
-            <h1 id="name_forgot_password_head">Forgot Password</h1>
-            <div id="form_forgot_password_inner_container">
-                <label id="name_forgot_password_email_label" for="name_forgot_password_email">Email</label>
-                <input id="name_forgot_password_email" type="email" maxlength="25" required>
-                <p id="name_forgot_password_button"><b>Submit</b></p>
-                <p id="name_forgot_password_back_button"><b>Back</b></p>
-            </div>
-        </form>
-
-        <form id="name_forgot_password_message_page">
-            <p id="name_forgot_password_message">Check your mail :]</p>
-            <p id="name_forgot_password_message_back_button"><b>Back</b></p>
-        </form>
     </div>
+    
     <script>
         var login_form = document.getElementById('login_form');
         var signup_form = document.getElementById('signup_form');
-
-
         var name_signup_direct = document.getElementById('name_signup_direct');
         var name_login_direct = document.getElementById('name_login_direct');
-
-        var name_forgot_password = document.getElementById('name_forgot_password');
+        var login_error = document.getElementById('login_error');
         
-        //forgot password page
-        var name_forgot_password_page = document.getElementById('name_forgot_password_page');
-        var name_forgot_password_back_button = document.getElementById('name_forgot_password_back_button');
-        var name_forgot_password_button= document.getElementById('name_forgot_password_button');
-
-        //forgot password page2
-        var name_forgot_password_message_page= document.getElementById('name_forgot_password_message_page');
-    
-
-
-    name_signup_direct.addEventListener('click',function(){
-        login_form.style.display = 'none';
-        signup_form.style.display = 'block';
-    });
-
-    name_login_direct.addEventListener('click',function(){
-        login_form.style.display = 'block';
-        signup_form.style.display = 'none';
-    });
-
-    name_forgot_password.addEventListener('click',function(){
-        login_form.style.display = 'none';
-        name_forgot_password_page.style.display = 'block';
-    });
-
-    name_forgot_password_back_button.addEventListener('click',function(){
-        name_forgot_password_page.style.display = 'none';
-        login_form.style.display = 'block';
-    });
-
-    name_forgot_password_button.addEventListener('click',function(){
-        name_forgot_password_page.style.display = 'none';
-        name_forgot_password_message_page.style.display = 'block';
+        name_signup_direct.addEventListener('click',function(){
+            login_signup();
         });
 
-    name_forgot_password_message_back_button.addEventListener('click',function(){
-        name_forgot_password_message_page.style.display = 'none';
-        login_form.style.display = 'block';
+        name_login_direct.addEventListener('click',function(){
+            signup_login()
         });
+
+
+        function login_signup(){
+            login_form.style.display = 'none';
+            signup_form.style.display = 'block';
+            login_error.innerHTML='';
+            login_error.style.top='55%'
+        }
+
+        function signup_login(){
+            login_form.style.display = 'block';
+            signup_form.style.display = 'none';
+            login_error.innerHTML='';
+            login_error.style.top='53%'
+        }
     </script> 
 
 
@@ -219,6 +188,20 @@
     <video id="home_back" draggable="false" src="../assets/video/rainy-night-view-of-the-city-moewalls-com.mp4"  class="to_hide" autoplay loop muted></video>
     
     
+    <!-- settings_page -->
+    <div id="settings_page">
+        <video src="../assets/video/aurora-forest-moewalls-com.mp4" id="settings_back" autoplay loop muted></video>
+        <h1 id="settings_head">Settings</h1>
+        <div id="settings_container">
+            <button id="audio_settings" class="settings_elements">Audio</button>
+            <button id="ball_control_settings" class="settings_elements">Ball Control</button>
+            <!-- <button id="training_settings" class="settings_elements">Training</button> -->
+        </div>
+        <button id="goback_settings">GO BACK</button>
+    </div>
+
+
+
     <!-- category_page -->
     <video id="category_back" draggable="false" src="../assets/video/dystopian-night-city-cyberpunk-2077-moewalls-com.mp4"  autoplay loop muted></video>
     <h1 id="category_head">Scenario</h1>
@@ -664,8 +647,236 @@
     </div>
 </div>
 
+<!-- mapswitch -->
+<div id="mapswitch_page">
+    <h1 id="ticker_data_mapswitch">Click to Start!</h1>
+    <img src="./games_html/game-back.jpg" id="game_back_mapswitch" draggable="false">   <!-- main_background -->
+    <img src="./games_html/game-back.jpg" id="game_back2_mapswitch" draggable="false">  <!-- point system -->
+    <img src="./games_html/game-back.jpg" id="game_back3_mapswitch" draggable="false">  <!-- game starter -->
+    <img src="./games_html/game-back.jpg" id="backgroundpauser_mapswitch" draggable="false">    <!-- game_over -->
 
 
+    <img src="../assets/image/pause.png" id="mapswitch_pause_button" alt="pause_button">
+
+    <div id="map_layout">
+        <div id="color_ball"></div>
+    </div>
+
+    <div id="mapswitch_ground">
+        <button id="ball_mapswitch">‎ </button>
+        <button id="ball_mapswitch2">‎ </button>
+        <button id="ball_mapswitch3">‎ </button>
+    </div>
+
+    <div id="mapswitch_system_container">
+        <div id="score_div_mapswitch">
+            <p id="score_mapswitch">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_mapswitch">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_mapswitch">0:59</p>
+        </div>
+        <div id="accuracy_div_mapswitch">
+            <p id="accuracy_mapswitch">0%</p>
+        </div>
+    </div>
+    
+    <div id="mapswitch_menu_container">
+        <img src="./games_html/game-back.jpg" id="pause_menu_mapswitch" draggable="false">  <!-- pause -->
+        <p id="resume_mapswitch" class="mapswitch_menu_container_items">RESUME</p>
+        <p id="restart_mapswitch"class="mapswitch_menu_container_items">RESTART</p>
+        <p id="exit_mapswitch" class="mapswitch_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+<!-- deathshot -->
+<div id="deathshot_page">
+    <h1 id="ticker_data_deathshot">Click to Start!</h1>
+    <img src="./games_html/game-back.jpg" id="game_back_deathshot" draggable="false">   <!-- main_background -->
+    <img src="./games_html/game-back.jpg" id="game_back2_deathshot" draggable="false">  <!-- point system -->
+    <img src="./games_html/game-back.jpg" id="game_back3_deathshot" draggable="false">  <!-- game starter -->
+    <img src="./games_html/game-back.jpg" id="backgroundpauser_deathshot" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="deathshot_pause_button" alt="pause_button">
+    <div id="deathshot_ground">
+        <button id="ball_deathshot">‎ </button>
+        <button id="ball_deathshot2">‎ </button>
+        <button id="ball_deathshot3">‎ </button>
+    </div>
+
+    <div id="deathshot_system_container">
+        <div id="score_div_deathshot">
+            <p id="score_deathshot">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_deathshot">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_deathshot">0:00</p>
+        </div>
+        <div id="accuracy_div_deathshot">
+            <p id="accuracy_deathshot">100%</p>
+        </div>
+    </div>
+    
+    <div id="deathshot_menu_container">
+        <img src="./games_html/game-back.jpg" id="pause_menu_deathshot" draggable="false">  <!-- pause -->
+        <p id="resume_deathshot" class="deathshot_menu_container_items">RESUME</p>
+        <p id="restart_deathshot"class="deathshot_menu_container_items">RESTART</p>
+        <p id="exit_deathshot" class="deathshot_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+<!-- Tracking -->
+
+<!-- singletrack -->
+<div id="singletrack_page">
+
+    <h1 id="ticker_data_singletrack">Click to Start!</h1>
+    <img src="./games_html/game-back.jpg" id="game_back_singletrack" draggable="false">   <!-- main_background -->
+    <img src="./games_html/game-back.jpg" id="game_back2_singletrack" draggable="false">  <!-- point system -->
+    <img src="./games_html/game-back.jpg" id="game_back3_singletrack" draggable="false">  <!-- game starter -->
+    <img src="./games_html/game-back.jpg" id="backgroundpauser_singletrack" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="singletrack_pause_button" alt="pause_button">
+
+
+    <div id="singletrack_system_container">
+        <div id="score_div_singletrack">
+            <p id="score_singletrack">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_singletrack">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_singletrack">0:59</p>
+        </div>
+        <div id="accuracy_div_singletrack">
+            <p id="accuracy_singletrack">0%</p>
+        </div>
+    </div>
+    
+    <button id="ball_singletrack">‎ </button>
+
+
+    <!-- menu_part -->
+    <div id="singletrack_menu_container">
+        <img src="./games_html/game-back.jpg" id="pause_menu_singletrack" draggable="false">  <!-- pause -->
+        <p id="resume_singletrack" class="singletrack_menu_container_items">RESUME</p>
+        <p id="restart_singletrack"class="singletrack_menu_container_items">RESTART</p>
+        <p id="exit_singletrack" class="singletrack_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+<!-- runner -->
+<div id="runner_page">
+    <h1 id="ticker_data_runner">Click to Start!</h1>
+    <img src="./games_html/game-back.jpg" id="game_back_runner" draggable="false">   <!-- main_background -->
+    <img src="./games_html/game-back.jpg" id="game_back2_runner" draggable="false">  <!-- point system -->
+    <img src="./games_html/game-back.jpg" id="game_back3_runner" draggable="false">  <!-- game starter -->
+    <img src="./games_html/game-back.jpg" id="backgroundpauser_runner" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="runner_pause_button" alt="pause_button">
+    <div id="runner_ground">
+        <button id="ball_runner">‎ </button>
+        <button id="midball_runner">‎ </button>
+    </div>
+
+    <div id="runner_system_container">
+        <div id="score_div_runner">
+            <p id="score_runner">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_runner">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_runner">0:59</p>
+        </div>
+        <div id="accuracy_div_runner">
+            <p id="accuracy_runner">0%</p>
+        </div>
+    </div>
+    <div id="runner_menu_container">
+        <img src="./games_html/game-back.jpg" id="pause_menu_runner" draggable="false">  <!-- pause -->
+        <p id="resume_runner" class="runner_menu_container_items">RESUME</p>
+        <p id="restart_runner"class="runner_menu_container_items">RESTART</p>
+        <p id="exit_runner" class="runner_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+<!-- parallel -->
+<div id="parallel_page">
+
+    <h1 id="ticker_data_parallel">Click to Start!</h1>
+    <img src="./games_html/game-back.jpg" id="game_back_parallel" draggable="false">   <!-- main_background -->
+    <img src="./games_html/game-back.jpg" id="game_back2_parallel" draggable="false">  <!-- point system -->
+    <img src="./games_html/game-back.jpg" id="game_back3_parallel" draggable="false">  <!-- game starter -->
+    <img src="./games_html/game-back.jpg" id="backgroundpauser_parallel" draggable="false">    <!-- game_over -->
+
+
+    <img src="../assets/image/pause.png" id="parallel_pause_button" alt="pause_button">
+
+
+    <div id="parallel_system_container">
+        <div id="score_div_parallel">
+            <p id="score_parallel">0 pts</p>
+        </div>
+        <div id="grishot_time_system_container">
+            <p id="time_margin_parallel">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+            <p id="time_parallel">0:59</p>
+        </div>
+        <div id="accuracy_div_parallel">
+            <p id="accuracy_parallel">0%</p>
+        </div>
+    </div>
+    
+    <button id="ball_parallel">‎ </button>
+
+
+    <!-- menu_part -->
+    <div id="parallel_menu_container">
+        <img src="./games_html/game-back.jpg" id="pause_menu_parallel" draggable="false">  <!-- pause -->
+        <p id="resume_parallel" class="parallel_menu_container_items">RESUME</p>
+        <p id="restart_parallel"class="parallel_menu_container_items">RESTART</p>
+        <p id="exit_parallel" class="parallel_menu_container_items">EXIT</p>
+    </div>
+</div>
+
+
+<!-- EvadeTrack -->
+<div id="evadetrack_page">
+
+<h1 id="ticker_data_evadetrack">Click to Start!</h1>
+<img src="./games_html/game-back.jpg" id="game_back_evadetrack" draggable="false">   <!-- main_background -->
+<img src="./games_html/game-back.jpg" id="game_back2_evadetrack" draggable="false">  <!-- point system -->
+<img src="./games_html/game-back.jpg" id="game_back3_evadetrack" draggable="false">  <!-- game starter -->
+<img src="./games_html/game-back.jpg" id="backgroundpauser_evadetrack" draggable="false">    <!-- game_over -->
+
+
+<img src="../assets/image/pause.png" id="evadetrack_pause_button" alt="pause_button">
+
+
+<div id="evadetrack_system_container">
+    <div id="score_div_evadetrack">
+        <p id="score_evadetrack">0 pts</p>
+    </div>
+    <div id="grishot_time_system_container">
+        <p id="time_margin_evadetrack">[&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp]</p>
+        <p id="time_evadetrack">0:59</p>
+    </div>
+    <div id="accuracy_div_evadetrack">
+        <p id="accuracy_evadetrack">0%</p>
+    </div>
+</div>
+
+<button id="ball_evadetrack">‎ </button>
+
+
+<!-- menu_part -->
+<div id="evadetrack_menu_container">
+    <img src="./games_html/game-back.jpg" id="pause_menu_evadetrack" draggable="false">  <!-- pause -->
+    <p id="resume_evadetrack" class="evadetrack_menu_container_items">RESUME</p>
+    <p id="restart_evadetrack"class="evadetrack_menu_container_items">RESTART</p>
+    <p id="exit_evadetrack" class="evadetrack_menu_container_items">EXIT</p>
+</div>
+</div>
 
     <!-- main_audio -->
     <audio id="audioPlayer" autoplay loop>
@@ -709,5 +920,16 @@
     <script src="../js/game_js/burstshot.js"></script>
     <script src="../js/game_js/multishot.js"></script>
     <script src="../js/game_js/gridshot.js"></script>
+    <script src="../js/game_js/mapswitch.js"></script>
+    <script src="../js/game_js/deathshot.js"></script>
+    <script src="../js/game_js/singletrack.js"></script>
+    <script src="../js/game_js/runner.js"></script>
+    <script src="../js/game_js/parallel.js"></script>
+    <script src="../js/game_js/evadetrack.js"></script>
+    <script src="../js/settings.js"></script>
+
+    <!-- backend -->
+     <script src="../js/backend.js"></script>
+     <script type="module" src="../js/name.js"></script>
 </body>
 </html>

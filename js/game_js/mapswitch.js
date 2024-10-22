@@ -30,6 +30,8 @@ var timerInterval; //  the interval ID
 
 var mapswitch_ground = document.getElementById('mapswitch_ground');
 
+var map_layout = document.getElementById('map_layout');
+var color_ball = document.getElementById('color_ball');
 
 //new var
 var black_transistor = document.getElementById('transitor')
@@ -57,6 +59,7 @@ function ticker_mapswitch() {
 
     setTimeout(() => {
         ticker_data_mapswitch.style.display = 'none';
+        map_layout.style.display='block';
         ball_mapswitch.style.display = 'block';
         ball_mapswitch2.style.display = 'block';
         ball_mapswitch3.style.display = 'block';
@@ -121,6 +124,7 @@ function time_caller_mapswitch() {
 //pause
 function mapswitch_ispaused() {
     mapswitch_pause_button.style.display='none';
+    map_layout.style.display='none';
     ball_mapswitch.style.display='none';
     ball_mapswitch2.style.display='none';
     ball_mapswitch3.style.display='none';
@@ -132,6 +136,7 @@ function mapswitch_ispaused() {
 //resume
 function mapswitch_isresumed(){
     mapswitch_pause_button.style.display='block';
+    map_layout.style.display='block';
     ball_mapswitch.style.display='block';
     ball_mapswitch2.style.display='block';
     ball_mapswitch3.style.display='block';
@@ -171,15 +176,16 @@ function call_mapswitchover(){
     backgroundpauser_mapswitch.style.display='block';
     ticker_data_mapswitch.style.fontSize='100px';
     ticker_data_mapswitch.innerHTML='Game Over';
+    map_layout.style.display='none';
     ball_mapswitch.style.display='none';
     ball_mapswitch2.style.display='none';
     ball_mapswitch3.style.display='none';
     mapswitch_pause_button.style.display='none';
     mapswitch_ground.style.display='none'
     setTimeout(function(){
-        result_screen(score_decider_mapswitch,accuracy_decider_mapswitch,mapswitch_page,'Result <br>Map<span style="color: red;">Switch',switching_page, 'Map<span style="color: red;">Switch</span>');
+        result_screen(score_decider_mapswitch,accuracy_decider_mapswitch,mapswitch_page,'Result <br>Map<span style="color: red;">Switch',switching_page, 'Map<span style="color: red;">Switch</span>','mapswitch_page');
         mapswitch_isrestarted();    
-    },3000);
+    },3000); 
 }
 
 var i_mapswitch=0;
@@ -189,8 +195,7 @@ var accuracy_decider_mapswitch = 0;
 var mapswitch_hits=0;
 var mapswitch_miss=0;
 
-mapswitch_ground.addEventListener('click', function() {
-    console.log('onground');
+function deduction_mapswitch(){
     var new_value = Math.floor(Math.random() * (86 - 65) + 65);
     score_decider_mapswitch = score_decider_mapswitch - new_value;
 
@@ -200,6 +205,10 @@ mapswitch_ground.addEventListener('click', function() {
     score_mapswitch.innerHTML = score_decider_mapswitch + " pts";
     mapswitch_miss++;
     mapswitch_accuracy_management();
+}
+
+mapswitch_ground.addEventListener('click', function() {
+    deduction_mapswitch();
 });
 
 
@@ -209,28 +218,22 @@ function mapswitch_accuracy_management(){
 }
 
 ball_mapswitch.addEventListener('click', function(event) {
-    console.log('one ball1')
     event.stopPropagation(); // Prevents the event from bubbling up to the ground
 
-    ball_mapswitch_mover(ball_mapswitch);
-    mapswitch_score_decider();
+    ball_mapswitch_mover(ball_mapswitch,'green');
 });
 
 ball_mapswitch2.addEventListener('click',function(){
-    console.log('one ball2')
     event.stopPropagation();
 
-    ball_mapswitch_mover(ball_mapswitch2);
-    mapswitch_score_decider();
+    ball_mapswitch_mover(ball_mapswitch2,'red');
 });
 
 
 ball_mapswitch3.addEventListener('click',function(){
-    console.log('one ball3')
     event.stopPropagation(); // Prevents the event from bubbling up to the ground
 
-    ball_mapswitch_mover(ball_mapswitch3);
-    mapswitch_score_decider();
+    ball_mapswitch_mover(ball_mapswitch3,'blue');
 });
 
 function mapswitch_score_decider(){
@@ -243,63 +246,77 @@ function mapswitch_score_decider(){
     mapswitch_accuracy_management();
 }
 
+var random_color ='red';
+function ball_color_changer(){
+    var colors = ["red", "green", "blue"];
+    random_color = colors[Math.floor(Math.random() * colors.length)];
+    color_ball.style.backgroundColor=random_color;
+}
 //ball mover
-function ball_mapswitch_mover(ball) {
-    const groundWidth = mapswitch_ground.offsetWidth;
-    const groundHeight = mapswitch_ground.offsetHeight;
-    const ballWidth = ball.offsetWidth;
-    const ballHeight = ball.offsetHeight;
+function ball_mapswitch_mover(ball,ball_color) {
 
-    let i_mapswitch, j_mapswitch;
-    let overlap = true;
+    if(ball_color == random_color){
+        mapswitch_score_decider();
+        ball_color_changer();
+        const groundWidth = mapswitch_ground.offsetWidth;
+        const groundHeight = mapswitch_ground.offsetHeight;
+        const ballWidth = ball.offsetWidth;
+        const ballHeight = ball.offsetHeight;
 
-    const balls = [ball_mapswitch, ball_mapswitch2, ball_mapswitch3];
-    const otherBalls = balls.filter(b => b !== ball);
+        let i_mapswitch, j_mapswitch;
+        let overlap = true;
 
-    let maxAttempts = 100;
-    let attempt = 0;
+        const balls = [ball_mapswitch, ball_mapswitch2, ball_mapswitch3];
+        const otherBalls = balls.filter(b => b !== ball);
 
-    while (overlap && attempt < maxAttempts) {
-        overlap = false;
+        let maxAttempts = 100;
+        let attempt = 0;
 
-        i_mapswitch = Math.floor(Math.random() * (groundWidth - ballWidth));
-        j_mapswitch = Math.floor(Math.random() * (groundHeight - ballHeight));
+        while (overlap && attempt < maxAttempts) {
+            overlap = false;
 
-        const newBallRect = {
-            left: i_mapswitch,
-            right: i_mapswitch + ballWidth,
-            top: j_mapswitch,
-            bottom: j_mapswitch + ballHeight
-        };
+            i_mapswitch = Math.floor(Math.random() * (groundWidth - ballWidth));
+            j_mapswitch = Math.floor(Math.random() * (groundHeight - ballHeight));
 
-        for (let otherBall of otherBalls) {
-            const otherBallRect = otherBall.getBoundingClientRect();
-            const groundRect = mapswitch_ground.getBoundingClientRect();
-
-            const adjustedOtherBallRect = {
-                left: otherBallRect.left - groundRect.left,
-                right: otherBallRect.right - groundRect.left,
-                top: otherBallRect.top - groundRect.top,
-                bottom: otherBallRect.bottom - groundRect.top
+            const newBallRect = {
+                left: i_mapswitch,
+                right: i_mapswitch + ballWidth,
+                top: j_mapswitch,
+                bottom: j_mapswitch + ballHeight
             };
 
-            if (!(newBallRect.right < adjustedOtherBallRect.left ||
-                  newBallRect.left > adjustedOtherBallRect.right ||
-                  newBallRect.bottom < adjustedOtherBallRect.top ||
-                  newBallRect.top > adjustedOtherBallRect.bottom)) {
-                overlap = true;
-                break;
+            for (let otherBall of otherBalls) {
+                const otherBallRect = otherBall.getBoundingClientRect();
+                const groundRect = mapswitch_ground.getBoundingClientRect();
+
+                const adjustedOtherBallRect = {
+                    left: otherBallRect.left - groundRect.left,
+                    right: otherBallRect.right - groundRect.left,
+                    top: otherBallRect.top - groundRect.top,
+                    bottom: otherBallRect.bottom - groundRect.top
+                };
+
+                if (!(newBallRect.right < adjustedOtherBallRect.left ||
+                    newBallRect.left > adjustedOtherBallRect.right ||
+                    newBallRect.bottom < adjustedOtherBallRect.top ||
+                    newBallRect.top > adjustedOtherBallRect.bottom)) {
+                    overlap = true;
+                    break;
+                }
             }
+
+            attempt++;
         }
 
-        attempt++;
+        if (!overlap) {
+            ball.style.left = i_mapswitch + "px";
+            ball.style.top = j_mapswitch + "px";
+        } else {
+            console.error('Could not find a non-overlapping position after ' + maxAttempts + ' attempts.');
+        }
     }
-
-    if (!overlap) {
-        ball.style.left = i_mapswitch + "px";
-        ball.style.top = j_mapswitch + "px";
-    } else {
-        console.error('Could not find a non-overlapping position after ' + maxAttempts + ' attempts.');
+    else{
+        deduction_mapswitch();
     }
 }
 
