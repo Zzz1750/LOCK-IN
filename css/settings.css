@@ -61,13 +61,13 @@
 #goback_settings{
     position: absolute;
     transform: translate(-50%,-50%);
-    font-size: 15px;
+    font-size: 20px;
     background-color: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.7);
     padding: 10px 20px 10px 20px;
     border-radius: 20px;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.8);
     bottom: 10%;
     left: 10%;
+    border: none;
 }
